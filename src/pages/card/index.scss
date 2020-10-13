@@ -1,0 +1,183 @@
+$radio: 7.5;
+
+.page-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(#fff, #e4e5e6);
+}
+
+.section-balance {
+  width: $radio*85px;
+  height: $radio*54px;
+
+  position: relative;
+
+  background-color: #a31914;
+
+  border-radius: 30px;
+
+  box-shadow: 1px 5px 5px 0px #d1cfcf;
+
+  margin: 50px 0;
+}
+
+.balance-card-bg {
+  width: 100%;
+
+  margin: 80px 50px;
+}
+
+.campus-card {
+  position: absolute;
+
+  font-size: 70px;
+
+  color: #fff;
+
+  left: 10%;
+  bottom: 15%;
+}
+
+.balance-wrapper {
+  flex: 1;
+
+  position: absolute;
+
+  right: 10%;
+  bottom: 15%;
+}
+
+.balance-value {
+  font-size: 70px;
+  font-weight: bold;
+
+  color: #fff;
+}
+
+.balance-yuan {
+  color: #fff;
+}
+
+.section-transaction {
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  background-color: #fff;
+
+  flex: 1;
+  width: 100%;
+
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header-shadow {
+  box-shadow: 0 7px 10px -7px rgba(51, 51, 51, 0.5);
+}
+
+.header-title {
+  font-size: 30px;
+  font-weight: bold;
+
+  padding-bottom: 5px;
+
+  border-bottom: solid 5px rgba(163, 25, 20, 0.5);
+}
+
+.header-add-up {
+  font-size: 27px;
+  color: #999999;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+.transaction-toolbar {
+  
+}
+
+.date-divider {
+  margin: 0 20px;
+}
+
+.transaction-divider {
+  flex: 1;
+  height: 2px;
+  background-color: #f3f3f3;
+  opacity: 0.5;
+
+  margin-top: 20px;
+}
+
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+.transaction {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px 0;
+  margin: 10px 0;
+
+}
+
+.transaction-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-addr {
+  font-size: 35px;
+}
+
+.transaction-time {
+  margin-top: 20px;
+  font-size: 25px;
+  color: #999999;
+}
+
+.transaction-amount {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.empty-view {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.empty-image {
+  margin-top: 60px;
+  width: 400px;
+  height: 400px;
+  opacity: 0.2;
+}

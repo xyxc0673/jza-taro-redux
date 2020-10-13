@@ -1,0 +1,44 @@
+.page {
+  padding: 10px 20px 150px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.add {
+  height: 90px;
+
+  border-radius: 45px;
+
+  box-shadow: 0.08533rem 0.21333rem 0.64rem 0 rgba(52, 142, 141, 0.3);
+
+  position: fixed;
+  bottom: 50px;
+
+  padding: 0 25px;
+
+  transition: 100ms all;
+
+  background-color: rgba(52, 142, 141, 0.702);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__hover {
+    opacity: 0.6;
+    box-shadow: 4px 4px 4px 4px #eeeeee;
+  }
+}
+
+.add-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.add-text {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 10px;
+}

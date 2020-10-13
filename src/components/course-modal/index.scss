@@ -1,0 +1,79 @@
+$float-layout-timer: 0.5s;
+$box-width: 60%;
+$box-border-radius: 10px;
+
+.background {
+  position: fixed;
+  width: 100%;
+  min-height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 100;
+
+  visibility: hidden;
+
+  // transition: visibility $float-layout-timer ease;
+
+  &__active {
+    visibility: visible;
+  }
+}
+
+.container {
+  width: $box-width;
+  min-height: 400px;
+
+  overflow: hidden;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  border-top-left-radius: $box-border-radius;
+  border-top-right-radius: $box-border-radius;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  fill: #fff;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+}
+
+.field-value {
+  font-size: 30px;
+  margin-left: 20px;
+
+  color: #fff;
+}
+
+$course-ctrl-btn-size: 50px;
+
+.control-area {
+  display: flex;
+  justify-content: space-around;
+  width: $box-width;
+  background-color: #fff;
+  border-bottom-left-radius: $box-border-radius;
+  border-bottom-right-radius: $box-border-radius;
+  opacity: 0.95;
+}
+
+.control-btn {
+  padding: 15px;
+  width: $course-ctrl-btn-size;
+  height: $course-ctrl-btn-size;
+}

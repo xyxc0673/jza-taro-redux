@@ -1,0 +1,40 @@
+@import "./mixins.scss";
+@import "./reset.scss";
+
+$primary_color: #348e8db3;
+$disabled_color: #dddddd;
+
+$text-color: #333333;
+$text-color-light: #666666;
+$text-color-lighter: #999999;
+
+$text-color-valid: rgba(52, 142, 141, 0.7) !important;
+
+$link-text-color: #33a6b8;
+
+$devider-color: #dedede;
+
+$border-radius: 4px;
+
+$background-color-grey: #f0f0f0;
+
+$library-theme-color: #00b294;
+$library-theme-text-color: rgba(0, 178, 148, 0.7);
+
+$grey: #f0f0f0;
+
+.btn {
+  color: #fff;
+
+  background: linear-gradient(45deg, #00caa9, #00b899);
+
+  background: -webkit-linear-gradient(45deg, #00caa9, #00b899);
+
+  background: -o-linear-gradient(45deg, #00caa9, #00b899);
+
+  background: -moz-linear-gradient(45deg, #00caa9, #00b899);
+
+  border-radius: 100px;
+  line-height: 100px;
+  height: 100px;
+}

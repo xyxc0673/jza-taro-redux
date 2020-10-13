@@ -1,0 +1,52 @@
+.picker {
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    height: 100px;
+  
+    // border: solid 1px #eaeaea;
+    border-radius: 100px;
+  
+    background-color: #f5f3f3;
+  
+    // box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 10px;
+  
+    transition: 0.1s all ease;
+  }
+
+  &-left {
+    display: flex;
+    align-items: center;
+  }
+
+  &-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  &-text {
+    padding: 0 20px;
+
+    color: #666666;
+    font-weight: bold;
+    font-size: 32px;
+  }
+
+  &--hover {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 40px;
+  }
+
+  &-triangle {
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+
+    border-top: solid 4px #999999;
+    border-right: solid 4px #999999;
+
+    transform: rotate(135deg);
+  }
+}

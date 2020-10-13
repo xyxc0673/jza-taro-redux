@@ -1,0 +1,35 @@
+.navigation {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.setting {
+  margin-right: 20px;
+  width: 35px;
+  height: 35px;
+}
+
+.setting__active {
+  opacity: 0.6;
+}
+
+.week-container {
+  display: flex;
+  align-items: center;
+}
+
+.week-title {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.arrow {
+  margin-left: 5px;
+  width: 40px;
+  height: 40px;
+}

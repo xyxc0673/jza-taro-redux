@@ -1,0 +1,67 @@
+.page-edit {
+  padding: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20rpx 30rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+  background-color: #f5f3f3;
+  transition: 0.1s all ease;
+  margin-bottom: 40px;
+}
+
+.form-control__edit {
+  height: 0;
+  overflow: hidden;
+}
+
+.form-control__show {
+  display: flex;
+  justify-content: space-between;
+}
+
+// .form-control__label {
+//     margin: 10px 0 15px;
+//     color: #999999;
+//     font-weight: bold;
+//     padding: 0 30px;
+// }
+
+.form-control__icon {
+  width: 50px;
+  height: 50px;
+}
+
+.form-control__input {
+  padding: 0 20rpx;
+  color: #666666;
+  font-weight: bold;
+  font-size: 32rpx;
+  flex: 1;
+
+  &__focus {
+    // border-color: #66CC75;
+    // box-shadow: 0 0 5px rgba(109,207,246,.5);
+  }
+}
+
+.btn {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.required-tip {
+  width: 42px;
+  text-align: center;
+  color: rgba(255, 0, 0, 0.575);
+}

@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "jza-taro-redux",
   "description": "A taro project for JLUZH",
-  "appid": "touristappid",
+  "appid": "wx68093de434d00f65",
   "setting": {
     "urlCheck": true,
     "es6": false,

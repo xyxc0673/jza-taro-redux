@@ -1,3 +1,5 @@
+const path = require('path')
+
 const config = {
   projectName: 'jza-taro-redux',
   date: '2020-9-12',
@@ -20,6 +22,9 @@ const config = {
   },
   framework: 'react',
   mini: {
+    imageUrlLoaderOption: {
+      esModule: false
+    },
     postcss: {
       pxtransform: {
         enable: true,
@@ -59,7 +64,23 @@ const config = {
         }
       }
     }
-  }
+  },
+  alias: {
+    '@/api': path.resolve(__dirname, '..', 'src/services/api'),
+    '@/tip': path.resolve(__dirname, '..', 'src/utils/tip'),
+    '@/util': path.resolve(__dirname, '..', 'src/utils/util'),
+    '@/utils': path.resolve(__dirname, '..', 'src/utils'),
+    '@/pages': path.resolve(__dirname, '..', 'src/pages'),
+    '@/store': path.resolve(__dirname, '..', 'src/store'),
+    '@/services': path.resolve(__dirname, '..', 'src/services'),
+    '@/route': path.resolve(__dirname, '..', 'src/utils/route'),
+    '@/data': path.resolve(__dirname, '..', 'src/data'),
+    '@/i18n': path.resolve(__dirname, '..', 'src/i18n'),
+    '@/messages': path.resolve(__dirname, '..', 'src/utils/messages'),
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/interfaces': path.resolve(__dirname, '..', 'src/interfaces'),
+    '@styles': path.resolve(__dirname, '..', 'src/styles'),
+  },
 }
 
 module.exports = function (merge) {

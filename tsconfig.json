@@ -22,7 +22,23 @@
     "typeRoots": [
       "node_modules/@types",
       "global.d.ts"
-    ]
+    ],
+    "paths": {
+      "@/services/*": ["./src/services/*"],
+      "@/api": ["./src/services/api"],
+      "@/tip": ["./src/utils/tip"],
+      "@/util": ["./src/utils/util"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/pages": ["./src/pages"],
+      "@/route": ["./src/utils/route"],
+      "@/messages": ["./src/utils/messages"],
+      "@/components/*": ["./src/components/*"],
+      "@/store/*": ["./src/store/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/i18n": ["./src/i18n"],
+      "@/interfaces/*": ["./src/interfaces/*"],
+      "@styles/*": ["./src/styles/*"],
+    }
   },
   "exclude": [
     "node_modules",

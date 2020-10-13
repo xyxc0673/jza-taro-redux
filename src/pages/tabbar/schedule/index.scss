@@ -1,0 +1,24 @@
+$cell-height: 125px;
+$schedule-header-height: 80px;
+$week-tab-height: 100px;
+
+.schedule-page {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  min-height: 100%;
+}
+
+// 隐藏 ScrollView 滚动条
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.schedule-header__with-week-tab {
+  transition: 0.1s all ease;
+  margin-top: $week-tab-height;
+}

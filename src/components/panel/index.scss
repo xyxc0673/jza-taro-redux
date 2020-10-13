@@ -1,0 +1,41 @@
+@import "@styles/theme.scss";
+
+.panel {
+  padding: 10px;
+  // background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  &__title {
+    position: relative;
+    padding-left: 20px;
+
+    color: #6a6a77;
+    
+    font-size: 30px;
+    font-weight: bold;
+
+    &::before {
+      content: "";
+
+      display: inline-block;
+
+      position: absolute;
+      top: 15%;
+      left: 0;
+
+      width: 6px;
+      height: 70%;
+
+      background-color: $primary_color;
+      border-radius: 2px;
+    }
+  }
+}
+
+.panel-body {
+  padding: 10px 0;
+}

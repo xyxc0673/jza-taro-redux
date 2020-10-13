@@ -1,0 +1,30 @@
+@import "@styles/theme.scss";
+
+.comp-infomation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 5px 20px;
+
+  &-cover {
+    width: 160px;
+    height: 200px;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+  
+    padding: 0 5px;
+
+    text {
+      padding: 5px 0;
+  
+      color: $text-color-light;
+  
+      font-size: 28px;
+    }
+  }
+}

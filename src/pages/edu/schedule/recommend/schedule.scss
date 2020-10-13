@@ -1,0 +1,58 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  // padding: 10px; // Todo
+}
+
+.float-container {
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 1000;
+}
+
+.float-btn {
+  margin-bottom: 25px;
+
+  z-index: 1001;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+  box-shadow: 0.08533rem 0.21333rem 0.64rem 0 rgba(0, 0, 0, 0.1);
+
+  background-color: #fff;
+
+  image {
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.btn-hover {
+  opacity: 0.8;
+}
+
+.schedule-header {
+  top: 0;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+
+  font-size: 50px;
+  line-height: 10px;
+}
+
+button::after {
+  border: none;
+}

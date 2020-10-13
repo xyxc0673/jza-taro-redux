@@ -1,0 +1,1 @@
+export const SET_SYSTEM_INFO = 'SET_SYSTEM_INFO'

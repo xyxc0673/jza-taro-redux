@@ -1,0 +1,450 @@
+$form-height: 350px;
+
+.score-page {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  height: 100%;
+
+  background-color: #eeeeee;
+
+  & > .title {
+    padding: 40px 0;
+
+    font-size: 50px;
+    font-weight: bold;
+
+    letter-spacing: 5px;
+  }
+}
+
+.form,
+.float-layout {
+  padding: 40px;
+
+  background-color: #fff;
+}
+
+.filter {
+  display: flex;
+  justify-content: flex-end;
+
+  &-picker {
+    display: flex;
+    align-items: center;
+  }
+
+  &-text {
+    font-size: 30px;
+  }
+}
+
+.form {
+  // margin-bottom: 10px;
+  position: fixed;
+  top: 0;
+
+  width: 100%;
+  height: $form-height;
+
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
+
+  transition: 0.1s all ease;
+
+  &--active {
+    height: 200px;
+  }
+}
+
+.form-control {
+  width: 100%;
+
+  margin: 10px 0;
+
+  background-color: #dedcdc;
+  border-radius: 100px;
+
+  display: flex;
+  flex-direction: row;
+
+  &__title {
+    padding-bottom: 20px;
+    font-size: 28px;
+  }
+}
+
+.picker {
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    height: 100px;
+
+    // border: solid 1px #eaeaea;
+    border-radius: 100px;
+
+    background-color: #f5f3f3;
+
+    // box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 10px;
+
+    transition: 0.1s all ease;
+  }
+
+  &-left {
+    display: flex;
+    align-items: center;
+  }
+
+  &-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  &-text {
+    padding: 0 20px;
+
+    color: #666666;
+    font-weight: bold;
+    font-size: 32px;
+  }
+
+  &--hover {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 40px;
+  }
+
+  &-triangle {
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+
+    border-top: solid 4px #999999;
+    border-right: solid 4px #999999;
+
+    transform: rotate(135deg);
+  }
+}
+
+.btn {
+  width: 100%;
+
+  margin-top: 30px;
+
+  opacity: 0;
+
+  transition: 0.1s all ease;
+
+  &--active {
+    opacity: 1;
+  }
+}
+
+.float-layout {
+  // margin-top: 370px;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: calc(100vh - 220px);
+
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+
+  transition: all 0.5s ease;
+
+  position: fixed; // Note: 不占据空间
+  top: 100%;
+  left: 0;
+
+  overflow-y: scroll;
+
+  opacity: 0;
+
+  &--active {
+    position: absolute;
+    top: 220px;
+
+    opacity: 1;
+  }
+
+  &-header {
+    padding: 30px;
+  }
+}
+
+.filter {
+  justify-self: flex-end;
+}
+
+.score-list {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+}
+
+.score {
+  display: flex;
+  // justify-content: space-between;
+
+  padding: 10px 40px 10px 0;
+
+  // border-bottom: solid 1px #eaeaea;
+  // border-left: solid 10px;
+
+  margin: 20px 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    width: 10px;
+    height: 70%;
+
+    position: absolute;
+    top: 15%;
+
+    display: inline-block;
+
+    border-radius: 10px;
+
+    background-color: #00c7a6;
+  }
+
+  &--A {
+    &::before {
+      background-color: #00c7a6;
+    }
+  }
+
+  &--B {
+    &::before {
+      background-color: #9ea9f0;
+    }
+  }
+
+  &--C {
+    &::before {
+      background-color: #f6e79c;
+    }
+  }
+
+  &--D {
+    &::before {
+      background-color: #f79c1d;
+    }
+  }
+
+  &--E {
+    &::before {
+      background-color: #9c2c2c;
+    }
+  }
+
+  &-right {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+  }
+
+  &-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-basis: 180px;
+  }
+
+  &-name {
+    font-size: 35px;
+
+    margin-bottom: 10px;
+  }
+
+  &-credit {
+    color: #999999;
+    font-size: 30px;
+  }
+
+  &-value {
+    font-size: 50px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    padding: 0 5px;
+
+    // &--green {
+    //   color: #00c7a6;
+    // }
+
+    // &--red {
+    //   color: #e41749;
+    // }
+  }
+}
+
+.sort-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.semester-picker {
+  flex: 0.85;
+  display: block;
+}
+
+.analyze-btn {
+  flex: 0.15;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.analyze-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.empty-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+
+  margin: 0 50px;
+  margin-top: $form-height + 200px;
+}
+
+.empty-view__image {
+  width: 300px;
+  height: 300px;
+}
+
+.empty-tip {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.empty-tip__text {
+  color: #c7c6c6;
+}
+
+.empty-tip__icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+}
+
+.analysis {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.analysis-title {
+
+}
+
+.analysis-title__text {
+  font-weight: bold;
+  margin-bottom: 70px;
+  font-size: 1.4rem;
+}
+
+.analysis-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-panel {
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.info-panel__header {
+  margin-bottom: 20px;
+  align-items: center;
+
+  &-title {
+    font-size: 25px;
+    color: #999;
+  }
+
+  &-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+  }
+}
+
+.info-panel__body {
+  flex-wrap: wrap;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  min-width: 140px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #eee;
+  margin-right: 25px;
+  margin-bottom: 25px;
+
+  // border: solid 1px #dedcdc
+}
+
+.info-value {
+  line-height: 100px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.info-title {
+  padding: 0 15px;
+  line-height: 60px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.info-title__pass {
+  background-color: #8ccbbe;
+}
+
+.info-title__fail {
+  background-color: #d63447;
+}
+
+.info-title__acp {
+  background-color: #dd7631;
+}
+
+.info-title__gpa {
+  background-color: #708160;
+}
+
+.info-title__total {
+  background-color: #d8c593;
+}
+
+.info-title__type {
+  background-color: #588da8;
+}

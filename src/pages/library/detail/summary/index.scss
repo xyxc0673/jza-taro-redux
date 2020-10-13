@@ -1,0 +1,22 @@
+@import "@styles/theme.scss";
+
+.title {
+  margin-top: 40px;
+
+  padding: 5px 20px;
+
+  font-weight: 600;
+  font-size: 35px;
+}
+
+.scroll-view {
+  padding: 20px;
+
+  max-height: 400px;
+  
+  box-sizing: border-box;
+}
+
+.content {
+  font-size: 27px;
+}

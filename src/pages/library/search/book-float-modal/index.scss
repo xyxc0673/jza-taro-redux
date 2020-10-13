@@ -1,0 +1,35 @@
+$green: #4eaf95;
+$red: #d94948;
+
+.btn-like {
+  margin-top: 40rpx;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: solid 1px $green;
+  text-align: center;
+
+  &__unlike {
+    border-color: $red;
+
+    .btn-like__icon {
+      background-color: $red;
+    }
+
+    .btn-like__text {
+      color: $red;
+    }
+  }
+}
+
+.btn-like__icon {
+  width: 70px;
+  height: 70px;
+  background-color: $green;
+}
+
+.btn-like__text {
+  color: $green;
+  margin-left: 20rpx;
+  flex: 1;
+}
