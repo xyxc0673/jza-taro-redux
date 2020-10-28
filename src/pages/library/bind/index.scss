@@ -1,0 +1,67 @@
+@import '@styles/theme.scss';
+
+.bind-page {
+  flex-direction: column;
+
+  padding: 40px;
+
+  &>.title {
+    margin-bottom: 80px;
+  
+    font-size: 50px;
+    font-weight: bold;
+  
+    letter-spacing: 5px;
+  }
+}
+
+.help-btn {
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  padding: 30px 0;
+}
+
+.form {
+
+  .btn {
+    color: #fff;
+    background-color: #00b294;
+    font-weight: bold;
+  }
+
+  &-control {
+    display: flex;
+    align-items: flex-end;
+
+    width: 100%;
+    height: 3rem;
+
+    font-size: 30px;
+
+    margin-top: 20px;
+    padding-bottom: 15px;
+
+    border-bottom: solid 1px #ededed;
+
+    &.focus {
+      border-bottom: solid 1px $primary_color;
+    }
+
+    &__label {
+      line-height: 1.4rem;
+      width: 130px;
+    }
+
+    &__input {
+      flex: 1;
+    }
+  }
+
+  .captcha {
+    width: 200px;
+    height: 90%;
+    border: solid 1px #ccc;
+  }
+}

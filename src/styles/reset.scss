@@ -1,0 +1,31 @@
+page {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, PingFang, 'Helvetica Neue',
+    STHeiti, Tahoma, sans-serif;
+}
+
+view {
+  display: flex;
+}
+
+button {
+  outline: none;
+
+  &::after {
+    border: none;
+  }
+}
+
+view {
+  box-sizing: border-box;
+}
+
+page {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

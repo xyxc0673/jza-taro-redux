@@ -1,0 +1,34 @@
+$capsule-padding: 6PX; // 胶囊的上下padding距离
+$capsule-height: 32PX; // 胶囊的高度
+$capsule-width: 88PX; // 胶囊的宽度
+
+$navigation-height: $capsule-padding * 2 + $capsule-height;
+$navigation-font-size: 15PX;
+$navigation-icon-font-size: 25PX;
+$navigation-box-shadow: 0 2PX 2PX #222;
+
+.navigation {
+  box-sizing: content-box;
+  position: relative;
+  background: transparent;
+  
+  &-bar {
+    box-sizing: content-box;
+    position: fixed;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+    font-size: $navigation-font-size;
+  }
+
+  &-placeholder {
+    box-sizing: content-box;
+    display: block;
+    width: 100%;
+    background: transparent;
+  }
+}

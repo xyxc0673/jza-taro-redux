@@ -1,0 +1,259 @@
+@import '@styles/theme.scss';
+
+.reader-page {
+  min-height: 100%;
+
+  background-color: $background-color-grey;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+
+  margin-bottom: 20px;
+
+  background-color: #fff;
+
+  &-first {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: solid 1px #eeeeee;
+  }
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+
+  border-top: solid 5px #eeeeee;
+  border-right: solid 5px #eeeeee;
+
+  transform: rotate(45deg);
+}
+
+.reader-info {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+
+  &__avatar {
+    width: 100px;
+    height: 100px;
+
+    border: solid 1px #fff;
+    border-radius: 50%;
+
+    overflow: hidden;
+  }
+
+  &__nickname {
+    font-size: 32px;
+    font-weight: bold;
+  }
+}
+
+.grid {
+  display: flex;
+
+  width: 100%;
+  height: 80px;
+
+  padding-top: 20px;
+
+  &-item {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__key {
+      font-size: 25px;
+      font-weight: 300;
+      color: #999999;
+      margin-top: 5px;
+    }
+
+    &__value {
+      font-size: 28px;
+      font-weight: bold;
+    }
+  }
+}
+
+.tab {
+  font-size: 30px;
+
+  padding: 20px 0;
+
+  background-color: #fff;
+
+  border-bottom: solid 1px #eeeeee;
+
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 20px;
+
+    border-radius: 10px;
+
+    width: 100%;
+
+    border: solid 1px $library-theme-color;
+
+    overflow: hidden;
+  }
+
+  &-item {
+    height: 30px;
+
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex: 1;
+
+    font-size: 30px;
+
+    color: $library-theme-text-color;
+
+    &--active {
+      background-color: $library-theme-color;
+      color: #fff;
+    }
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 20px;
+}
+
+.login-status {
+  font-size: 26px;
+  font-weight: bold;
+  color: #dedede;
+}
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 20px;
+
+  flex: 1;
+
+  background-color: #fff;
+
+  // height: 100%;
+}
+
+.book {
+  padding: 40px 5px;
+  // margin-bottom: 10px;
+
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: column;
+
+  border-bottom: solid 1px #eeeeee;
+
+  // box-shadow: 0 0 1px 1px #eeeeee;
+
+  // border-radius: 10px;
+
+  &-title {
+    font-size: 30px;
+    font-weight: bold;
+
+    padding-bottom: 10px;
+  }
+
+  &-author {
+    font-size: 25px;
+    color: #999999;
+  }
+
+  &-datetime {
+    padding-top: 40px;
+    font-size: 26px;
+
+    color: #666666;
+
+    display: flex;
+    align-items: center;
+  }
+}
+
+.empty-list-tip {
+  width: 100%;
+
+  margin: 10px 0;
+
+  font-size: 25px;
+
+  background-color: #fff;
+  color: #ccc;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__image {
+    width: 400px;
+    height: 400px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+  }
+}
+
+.line {
+  width: 3px;
+  height: 100%;
+  background-color: $library-theme-color;
+}
+
+.point {
+  padding: 0 20px;
+  color: #eeeeee;
+}
+
+.book-num {
+  padding: 5px 10px;
+  border-radius: 10px;
+  align-items: center;
+
+  background-color: #999;
+  color: #eee;
+
+  &__active {
+    background-color: #86bdab;
+    color: #fff;
+  }
+}
+
+.book-num__icon {
+  width: 25px;
+  height: 25px;
+}
+
+.book-num__text {
+  margin-right: 10px;
+}

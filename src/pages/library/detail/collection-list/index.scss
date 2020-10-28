@@ -1,0 +1,71 @@
+@import "@styles/theme.scss";
+
+.comp-collection-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.valid-text {
+  color: $text-color-valid;
+}
+
+.title {
+  padding: 5px 0;
+
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.collection-list {
+  padding: 35px 0 0;
+
+  display: flex;
+  flex-direction: column;
+
+  text {
+    text-align: center;
+  }
+
+
+  &-header {
+    display: flex;
+    justify-content: space-around;
+
+    padding: 2px 5px;
+
+    font-size: 30px;
+    color: $text-color;
+
+    background-color: $grey;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: space-around;
+
+    padding: 2px 5px;
+
+    font-size: 27px;
+    color: $text-color-light;
+
+    &__content {
+    
+      &-first {
+        width: 200px;
+      }
+  
+      &-second {
+        flex: 1;
+      }
+  
+      &-last {
+        width: 200px;
+      }
+    }
+  }
+}

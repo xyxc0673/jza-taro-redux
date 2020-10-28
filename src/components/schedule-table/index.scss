@@ -1,0 +1,188 @@
+$cell-height: 125px;
+$schedule-header-height: 80px;
+$week-tab-height: 100px;
+
+.month {
+  font-size: 25px;
+
+  width: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weekday {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  flex: 1;
+
+  text-align: center;
+
+  &-day {
+    font-size: 24px;
+  }
+
+  &-date {
+    font-size: 23px;
+
+    color: #999999;
+  }
+
+  &__curr {
+    .weekday-day {
+      color: rgba(52, 142, 141, 0.9);
+    }
+    .weekday-date {
+      color: rgba(52, 142, 141, 0.7);
+    }
+  }
+}
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+
+  &-body {
+    display: flex;
+    flex-direction: row;
+
+    flex: 1;
+
+    margin-top: $schedule-header-height + 10px;
+
+    background-color: transparent;
+
+    &__with-week-tab {
+      margin-top: $schedule-header-height + $week-tab-height + 10px;
+    }
+  }
+
+  &-column {
+    display: flex;
+    flex-direction: column;
+
+    background-color: transparent;
+
+    &-sidebar {
+      flex: 1;
+    }
+
+    &-course {
+      flex: 2;
+
+      color: #fff;
+    }
+  }
+}
+
+.schedule-header {
+  position: fixed;
+
+  height: $schedule-header-height;
+
+  width: 100%;
+
+  background-color: #fff;
+
+  z-index: 1;
+
+  transition: 0.1s all ease;
+
+  &-top-zero {
+    top: 0;
+  }
+
+  &__with-week-tab {
+    margin-top: $week-tab-height;
+  }
+
+  &-with-shadow {
+
+  }
+  box-shadow: 0 10px 10px -10px rgba(0,0,0,0.2);
+}
+
+.course {
+  height: $cell-height;
+
+  font-size: 26px;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  font-size: 23px;
+
+  opacity: 0.8;
+
+  margin: 2px;
+
+  border-radius: 5px;
+
+  background-color: transparent;
+
+  &__hover {
+    opacity: 0.6;
+  }
+
+  &-name {
+    font-weight: bold;
+  }
+
+  &-break-word {
+    word-break: break-all;
+
+    display: -webkit-box;
+    overflow: hidden;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+
+.cell {
+  height: $cell-height;
+  padding: 0 0.25rem;
+
+  font-size: 20px;
+}
+
+.session {
+  height: $cell-height + 4px;
+  text-align: center;
+
+  font-size: 26px;
+
+  color: #999999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background {
+  position: fixed;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: -1;
+
+  &__blur {
+    // 消除高斯模糊产生的白边
+    top: -15px;
+    left: -15px;
+
+    width: calc(100vw + 30px);
+    height: calc(100vh + 30px);
+
+    filter: blur(10px);
+  }
+}

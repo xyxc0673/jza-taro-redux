@@ -1,0 +1,64 @@
+.comp-magic-box {
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, 0.01);
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0 20rpx;
+}
+
+.function-list {
+  display: flex;
+  white-space: nowrap;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+
+.function-list__container {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  flex-wrap: nowrap;
+  margin-left: -20px;
+}
+
+.function-item {
+  min-width: 24%;
+  max-width: 24%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.function-img {
+  width: 50px;
+  height: 50px;
+}
+
+.function-title {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #393e46;
+}
+
+.progress {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  height: 10px;
+  width: 50px;
+  margin: 0px 0 10px;
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background-color: rgba(255, 255, 255, 1);
+  height: 10px;
+  width: 23px;
+}

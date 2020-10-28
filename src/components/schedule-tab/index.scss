@@ -1,0 +1,106 @@
+.component-schedule-tab {
+  display: flex;
+  flex-direction: column;
+}
+
+.day-list {
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.day {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 30px;
+  transition: all 50ms ease;
+
+  &__active {
+    font-size: 50px;
+
+    .day-text {
+      font-weight: bold;
+    }
+  }
+
+  &__hover {
+    font-size: 50px;
+  }
+}
+
+.day-text {
+  text-align: center;
+}
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+}
+
+.tab-course {
+  flex: 1;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin: 20px 0;
+
+  padding: 20px 20px 60px;
+
+  // border-radius: 10px;
+
+  background-color: #fff;
+
+  border-bottom: solid #eeeeee 1px;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-desc__left {
+}
+
+.course-desc__right {
+  margin-left: 10px;
+}
+
+.course-desc {
+  margin-top: 20px;
+  font-size: 25px;
+  color: #cccccc;
+}
+
+.empty {
+  flex: 1;
+  font-size: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+$course-ctrl-btn-size: 50px;
+
+.course-ctrl {
+}
+
+.course-ctrl-btn {
+  width: $course-ctrl-btn-size;
+  height: $course-ctrl-btn-size;
+
+  margin-left: 10px;
+
+  &__active {
+    opacity: 0.6;
+  }
+  color: rgba(255, 0, 0, 0.8);
+}
+
+.course-ctrl-btn__icon {
+  width: $course-ctrl-btn-size;
+  height: $course-ctrl-btn-size;
+}

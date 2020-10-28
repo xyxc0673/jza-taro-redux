@@ -1,0 +1,40 @@
+.page-advanced {
+    width: 100%;
+    height: 100%;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+.section-title {
+    font-size: 30px;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px 30px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100px;
+}
+
+.bg-thumb {
+    width: 100px;
+    height: 60px;
+
+    padding: 1px;
+    margin-right: 10px;
+
+    border: solid 1px #cccccc;
+}

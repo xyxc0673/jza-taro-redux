@@ -1,0 +1,173 @@
+.page {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+}
+
+.form {
+  display: flexl;
+  flex-direction: column;
+
+  width: 100%;
+
+  padding: 40px;
+}
+
+.picker {
+  margin-bottom: 40px;
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    height: 100px;
+
+    // border: solid 1px #eaeaea;
+    border-radius: 100px;
+
+    background-color: #f5f3f3;
+
+    // box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 10px;
+
+    transition: 0.1s all ease;
+  }
+
+  &-left {
+    display: flex;
+    align-items: center;
+  }
+
+  &-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  &-text {
+    padding: 0 20px;
+
+    color: #666666;
+    font-weight: bold;
+    font-size: 32px;
+  }
+
+  &--hover {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 40px;
+  }
+
+  &-triangle {
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+
+    border-top: solid 4px #999999;
+    border-right: solid 4px #999999;
+
+    transform: rotate(135deg);
+  }
+}
+
+.btn {
+  width: 100%;
+
+  margin-top: 20px;
+
+  transition: 0.1s all ease;
+
+  &--active {
+    opacity: 1;
+  }
+}
+
+.panel-background {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  &__active {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: calc(100% - 440px);
+  transition: all 0.6s cubic-bezier(.08,.33,.08,1.39), transform 400ms cubic-bezier(0.36, 0.66, 0.04, 1);
+
+  background-color: #fff;
+
+  box-shadow: rgba(0, 0, 0, 0.04) 0px -4px 0px;
+
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  z-index: 2;
+
+  &__active {
+    top: 440px;
+  }
+}
+
+.panel-header {
+  padding: 35px 0;
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.panel-control {
+  width: 25%;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.grade-semester-picker {
+  margin: 0 20px;
+}
+
+.panel-close {
+  margin: 0 20px;
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+
+.class-list {
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px 40px;
+}
+
+.class-item {
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.class-index {
+  font-style: italic;
+  margin-right: 30px;
+}
+
+.storage-schedule {
+  position: absolute;
+  bottom: 40px;
+
+  align-self: center;
+
+  font-size: 25px;
+  color: #999999;
+}

@@ -1,0 +1,55 @@
+.comp-schedule-card {
+  display: flex;
+  flex-direction: column;
+
+  // padding: 20px;
+  margin-bottom: 40px;
+  background-color: #e68981;
+
+  border-radius: 20px;
+
+  margin: 20px;
+
+  color: #fff;
+
+  width: 30%;
+  height: 100px;
+  position: relative;
+
+  box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, 0.01);
+}
+
+.money-symbol {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  opacity: 0.3;
+  font-size: 20px;
+}
+
+.card-title {
+  margin-bottom: 40px;
+  font-size: 40px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  // background-image: linear-gradient(to bottom right, rgba(236, 107, 103, 0.5), #e64540);
+  border-radius: 30px;
+}
+
+.balance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    line-height: 100px;
+    // color: #fff;
+}
+
+.help-text {
+  text-align: center;
+  line-height: 100px;
+}

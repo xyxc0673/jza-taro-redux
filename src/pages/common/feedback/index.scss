@@ -1,0 +1,29 @@
+.page-feedback {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    width: 400px;
+}
+
+.container {
+    height: 400px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.or {
+    font-size: 25px;
+    color: #666;
+}
+
+.footer {
+    position: fixed;
+    bottom: 25px;
+    font-size: 25px;
+    color: #999;
+}
