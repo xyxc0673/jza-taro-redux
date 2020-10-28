@@ -196,7 +196,6 @@ const Bind: React.FC = () => {
           <Input
             id={InputType.PWD}
             value={loginState.pwd}
-            type='number'
             password
             className='form-control__input'
             placeholder={i18n.libraryReaderLogin.pwdPlaceHolder}
