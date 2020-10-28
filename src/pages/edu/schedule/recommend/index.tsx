@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import Taro from '@tarojs/taro'
-import { View, Text, Picker, Image, Button, Icon } from '@tarojs/components'
+import { View, Text, Picker, Image, Button } from '@tarojs/components'
 import { useSelector, useDispatch } from 'react-redux'
 import className from 'classnames'
 import { useI18n } from "@i18n-chain/react";
@@ -36,8 +35,8 @@ const Recommend = () => {
   useI18n(i18n)
   
   const [showBottmPanel, setShowBottmPanel] = useState(false)
-  const [gradeValue, setGradeValue] = useState(0)
-  const [collegeValue, setCollegeValue] = useState(-1)
+  const [gradeValue, setGradeValue] = useState(4)
+  const [collegeValue, setCollegeValue] = useState(0)
   const [majorValue, setMajorValue] = useState(-1)
   const [yearSemesterValue, setYearSemesterValue] = useState([0, 0])
 
@@ -69,8 +68,8 @@ const Recommend = () => {
 
   const dispatch = useDispatch()
 
-  const handleGradeChange = useCallback(
-    (e) => {
+  const handleGradeChange = 
+    useCallback((e) => {
       setGradeKey(grade[e.detail.value].key)
       setGradeValue(e.detail.value)
 
@@ -79,9 +78,7 @@ const Recommend = () => {
           collegeKey.slice(0, 2) + grade[e.detail.value].key.slice(2, 4)
         )
       }
-    },
-    [collegeKey, grade]
-  )
+    }, [collegeKey, grade])
 
   const handleCollegeChange = useCallback(
     (e) => {
@@ -114,9 +111,9 @@ const Recommend = () => {
 
   useEffect(() => {
     if (grade.length > 0) {
-      handleGradeChange({ detail: { value: grade.length - 1 } })
+      handleGradeChange({ detail: { value: gradeValue } })
     }
-  }, [grade, handleGradeChange])
+  }, [grade, gradeValue, handleGradeChange])
 
   useEffect(() => {
     genYearAndSemesterRange(collegeKey.slice(0, 2) + gradeKey.slice(2, 4))
@@ -124,9 +121,9 @@ const Recommend = () => {
 
   useEffect(() => {
     if (college.length > 0) {
-      handleCollegeChange({ detail: { value: 0 } })
+      handleCollegeChange({ detail: {value: collegeValue} })
     }
-  }, [college, handleCollegeChange])
+  }, [college, collegeValue, handleCollegeChange])
 
   useEffect(() => {
     if (major.length > 0) {
@@ -218,7 +215,7 @@ const Recommend = () => {
   }
 
   const renderGrade = () => {
-    if (!gradeValue) {
+    if (!grade[gradeValue]) {
       return i18n.eduSchedule.recommend.loading
     }
 
@@ -228,11 +225,6 @@ const Recommend = () => {
   const navToScheduleSetting = () => {
     Route.navTo(Route.path.eduScheduleSetting)
   }
-
-  const animateMoveSlide = useCallback(
-    (offset: Number, callback?: Function) => {},
-    []
-  )
 
   return (
     <View className='page'>
