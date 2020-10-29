@@ -38,7 +38,7 @@ const ScheduleTab: React.FC<IProps> = props => {
   }, [])
 
   useEffect(() => {
-    setCurrDaySchedule(schedule[currDay + 1] || ([] as Array<ICourse>))
+    setCurrDaySchedule(schedule[currDay] || ([] as Array<ICourse>))
   }, [schedule, currDay])
 
   useEffect(() => {

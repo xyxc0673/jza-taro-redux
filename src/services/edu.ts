@@ -12,7 +12,6 @@ import {
   CUSTOM_SCHEDULE,
   MY_SCHEDULE,
   SCHOOL_START_DATE,
-  SETTING_SCHEDULE,
   SETTING,
   RECOMMEND_SCHEDULE
 } from './constant'
@@ -305,7 +304,7 @@ class Edu {
 
     for (let course of rawSchedule) {
       if (forTab) {
-        schedule[course.dayInt].push(course)
+        schedule[course.dayInt - 1].push(course)
         continue
       }
 
