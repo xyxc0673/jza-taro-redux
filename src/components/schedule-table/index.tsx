@@ -20,7 +20,8 @@ interface IProps {
   customHeaderStyle?: string
   background?: string
   backgroundStyle?: number
-  onCourseClick: Function
+  onCourseClick: Function,
+  headerClass?: any
 }
 
 const ScheduleTable: React.FC<IProps> = props => {
@@ -75,9 +76,10 @@ const ScheduleTable: React.FC<IProps> = props => {
 
   const renderScheduleHeader = () => {
     const scheduleHeaderClass = className('schedule-header', {
-      'header-class': true
+      [props.headerClass]: true
     })
 
+    console.log("scheduleHeaderClass", props)
     return (
       <View className={scheduleHeaderClass} style={customHeaderStyle}>
         <View className='month'>

@@ -233,7 +233,7 @@ const TabbarSchedule: React.FC = () => {
       <ScheduleTable
         dayDateList={dayDateList}
         schedule={schedule}
-        header-class={scheduleHeaderClass}
+        headerClass={scheduleHeaderClass}
         sessionList={sessionList}
         background={
           setting.schedule.customBackground && setting.schedule.imageUrl

@@ -92,13 +92,10 @@ $week-tab-height: 100px;
   z-index: 1;
 
   transition: 0.1s all ease;
+  top: 120px;
 
   &-top-zero {
     top: 0;
-  }
-
-  &__with-week-tab {
-    margin-top: $week-tab-height;
   }
 
   &-with-shadow {
