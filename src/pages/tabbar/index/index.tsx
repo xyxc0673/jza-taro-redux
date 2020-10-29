@@ -1,4 +1,4 @@
-import Taro, { usePullDownRefresh } from "@tarojs/taro";
+import Taro, { usePullDownRefresh, useShareAppMessage } from "@tarojs/taro";
 import React, { useState, useEffect, useCallback } from "react";
 import { View, Button, Text } from "@tarojs/components";
 import { useDispatch, useSelector } from "react-redux";
@@ -60,6 +60,14 @@ const Index = () => {
   const [recommendRenderedScheduleList, setRenderedScheduleList] = useState(
     [] as Array<any>
   );
+
+  useShareAppMessage(() => {
+    return {
+      title: '明日何其多',
+      path: '/pages/tabbar/index/index',
+      imageUrl: '../../../assets/images/undraw_walking_outside.svg'
+    }
+  })
 
   const dispatch = useDispatch();
 
