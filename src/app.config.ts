@@ -34,19 +34,19 @@ export default {
     tabBar: {
       list: [
         {
-          text: '',
+          text: '时刻',
           pagePath: 'pages/tabbar/index/index',
           iconPath: 'assets/images/palette-line__unselected.png',
           selectedIconPath: 'assets/images/palette-line__selected.png'
         },
         {
-          text: '',
+          text: '课表',
           pagePath: 'pages/tabbar/schedule/index',
           iconPath: 'assets/images/table-line__unselected.png',
           selectedIconPath: 'assets/images/table-line__selected.png'
         },
         {
-          text: '',
+          text: '我的',
           pagePath: 'pages/tabbar/me/index',
           iconPath: 'assets/images/user-smile-line__unselected.png',
           selectedIconPath: 'assets/images/user-smile-line__selected.png'
