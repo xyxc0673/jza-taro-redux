@@ -59,6 +59,9 @@ const TabbarSchedule: React.FC = () => {
   const customSchedule = useSelector<any, any>(
     state => state.edu.customSchedule
   )
+  const systemInfo = useSelector<any, any>(
+    state => state.common.systemInfo
+  )
   const setting = useSelector<any, any>(state => state.user.setting)
 
   const [schedule, setSchedule] = useState([] as Array<any>)
@@ -234,6 +237,9 @@ const TabbarSchedule: React.FC = () => {
         dayDateList={dayDateList}
         schedule={schedule}
         headerClass={scheduleHeaderClass}
+        customHeaderStyle={{
+          top: showWeekTab ? `${systemInfo.navigationHeight + systemInfo.statusBarHeight + 50}PX` : `${systemInfo.navigationHeight + systemInfo.statusBarHeight}PX`
+        }}
         sessionList={sessionList}
         background={
           setting.schedule.customBackground && setting.schedule.imageUrl

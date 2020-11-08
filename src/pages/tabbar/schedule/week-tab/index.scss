@@ -1,4 +1,4 @@
-$week-tab-height: 100px;
+$week-tab-height: 50PX;
 
 $fixed-week-width: 130px;
 
@@ -55,7 +55,7 @@ $fixed-week-width: 130px;
   position: fixed;
   left: 0;
   width: $fixed-week-width;
-  height: $week-tab-height - 20px;
+  height: $week-tab-height - 10PX;
   margin: 0;
   background-color: #fff;
   border-top-right-radius: 10rpx;

@@ -17,7 +17,7 @@ interface IProps {
   schedule: Array<Array<ICourse>>
   sessionList: Array<any>
   dayDateList: Array<IDayDate>
-  customHeaderStyle?: string
+  customHeaderStyle?: any
   background?: string
   backgroundStyle?: number
   onCourseClick: Function,
@@ -79,7 +79,6 @@ const ScheduleTable: React.FC<IProps> = props => {
       [props.headerClass]: true
     })
 
-    console.log("scheduleHeaderClass", props)
     return (
       <View className={scheduleHeaderClass} style={customHeaderStyle}>
         <View className='month'>

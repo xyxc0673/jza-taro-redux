@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, ScrollView } from '@tarojs/components'
+import { useSelector } from 'react-redux'
 import className from 'classnames'
 import i18n from '@/i18n'
 
@@ -14,6 +15,9 @@ interface IProps {
 }
 
 const WeekTab: React.FC<IProps> = props => {
+  const systemInfo = useSelector<any, any>(
+    state => state.common.systemInfo
+  )
   const { currWeek, selectedWeek, showWeekTab, weekList, switchWeek } = props
   const [toIndex, setToIndex] = useState(currWeek)
   const currWeekElem = (
@@ -49,6 +53,9 @@ const WeekTab: React.FC<IProps> = props => {
       onScroll={() => setToIndex(-1)}
       scrollIntoView={`week-${toIndex - 2}`}
       scrollWithAnimation
+      style={{
+        top: `${systemInfo.navigationHeight + systemInfo.statusBarHeight}PX`
+      }}
     >
       <View className='week-tab'>
         {showWeekTab && currWeekElem}
