@@ -102,8 +102,8 @@ const ScheduleTable: React.FC<IProps> = props => {
 
   const scheduleBodyClass = className('schedule-body', {})
 
-  const backgroundClass = className('background', {
-    background__blur: backgroundStyle === BACKGROUND_IMAGE_STYLE.BLUR
+  const backgroundClass = className('schedule-background', {
+    'schedule-background__blur': backgroundStyle === BACKGROUND_IMAGE_STYLE.BLUR
   })
   return (
     <View className='schedule'>
