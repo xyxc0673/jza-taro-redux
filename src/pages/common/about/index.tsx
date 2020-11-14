@@ -10,6 +10,7 @@ import FloatBottomModal from '@/components/float-bottom-modal'
 import i18n from '@/i18n'
 
 import './index.scss'
+import config from "@/utils/config";
 
 const MODAL_TYPE = {
   CHANGELOG: 'Changelog',
@@ -24,7 +25,7 @@ const About: React.FC = () => {
     return {
       title: '明日何其多',
       path: '/pages/tabbar/index/index',
-      imageUrl: '../../../assets/images/undraw_walking_outside.svg'
+      imageUrl: config.shareImageUrl
     }
   })
 

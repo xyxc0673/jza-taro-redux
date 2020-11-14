@@ -37,6 +37,7 @@ import BalanceCard from "./balance-card";
 
 import "./index.scss";
 import WelcomeCard from "./welcome-card";
+import config from "@/utils/config";
 
 dayjs.extend(advancedFormat)
 
@@ -65,7 +66,7 @@ const Index = () => {
     return {
       title: '明日何其多',
       path: '/pages/tabbar/index/index',
-      imageUrl: '../../../assets/images/undraw_walking_outside.svg'
+      imageUrl: config.shareImageUrl
     }
   })
 
