@@ -18,6 +18,8 @@ const zh_CN = {
   changeLog: '正式发布 1.0.0 版本',
 
   clearStorage: '确定要清除数据吗？（注意：该操作会清空本地所有数据）',
+
+  shareTitle: '一起去看海呀~',
   
   feedback: {
     or: '或者',

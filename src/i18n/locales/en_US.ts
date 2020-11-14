@@ -19,6 +19,8 @@ const en_US = {
 
   clearStorage: 'Sure to clear storage?',
 
+  shareTitle: `Let's go see the sea together~ `,
+
   feedback: {
     or: 'OR',
     contact: 'Contact',

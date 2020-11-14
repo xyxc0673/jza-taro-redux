@@ -23,7 +23,7 @@ const About: React.FC = () => {
 
   useShareAppMessage(() => {
     return {
-      title: '明日何其多',
+      title: i18n.shareTitle,
       path: '/pages/tabbar/index/index',
       imageUrl: config.shareImageUrl
     }
