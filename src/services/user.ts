@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import Messages from '@/messages'
 import i18n from '@/i18n'
-import config from '@/data/config'
+import version from '@/data/version'
 import { LANGUAGE } from './constant'
 
 export class User {
@@ -108,7 +108,7 @@ export class User {
     if (setting && field) {
       return setting[field]
     }
-    const defaultSetting = { schedule: {}, language: LANGUAGE.AUTO, version: config.version, releaseDate: config.releaseDate }
+    const defaultSetting = { schedule: {}, language: LANGUAGE.AUTO, version: version.version, releaseDate: version.releaseDate }
     if (!setting.language) {
       Taro.clearStorage().then(() => {
         Taro.setStorageSync('setting', defaultSetting)

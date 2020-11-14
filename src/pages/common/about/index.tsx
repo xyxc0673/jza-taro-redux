@@ -5,7 +5,7 @@ import { useI18n } from "@i18n-chain/react";
 
 import Tip from '@/tip'
 import Route from '@/route'
-import config from "@/data/config";
+import version from "@/data/version";
 import FloatBottomModal from '@/components/float-bottom-modal'
 import i18n from '@/i18n'
 
@@ -33,7 +33,7 @@ const About: React.FC = () => {
 
   const renderChangeLog = (
     <View className='changelog'>
-      <Text className='changelog-date'>{`${config.version} (${config.releaseDate.format('YYYY-MM-DD')})`}</Text>
+      <Text className='changelog-date'>{`${version.version} (${version.releaseDate.format('YYYY-MM-DD')})`}</Text>
       <Text className='changelog-item'>{i18n.changeLog}</Text>
     </View>
   )
@@ -115,7 +115,7 @@ const About: React.FC = () => {
             }
           }}
         >
-          {`${config.version} (${config.releaseDate.format('YYYY-MM-DD')})`}
+          {`${version.version} (${version.releaseDate.format('YYYY-MM-DD')})`}
         </Text>
 
         <View className='item-container'>
