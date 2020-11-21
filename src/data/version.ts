@@ -1,6 +1,6 @@
 import dayjs  from "dayjs";
 
 export default {
-    version: '1.0.0',
-    releaseDate: dayjs('2020-10-25')
+    version: '1.0.1',
+    releaseDate: dayjs('2020-11-15')
 }
