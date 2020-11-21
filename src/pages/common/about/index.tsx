@@ -158,7 +158,7 @@ const About: React.FC = () => {
               </Text>
             </View>
           </View>
-          <View className='item'>
+          {/* <View className='item'>
             <Image
               src={require('../../../assets/images/sun-line.svg')}
               mode='aspectFit'
@@ -173,7 +173,7 @@ const About: React.FC = () => {
               </Text>
               <Text className='link-text'></Text>
             </View>
-          </View>
+          </View> */}
           <View className='item'>
             <Image
               src={require('../../../assets/images/star-smile-line.svg')}
