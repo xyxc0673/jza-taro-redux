@@ -291,7 +291,11 @@ const Recommend = () => {
             />
           </View>
         </Picker>
-        <Button className='btn' onClick={handleSubmit}>
+        <Button
+          className='btn'
+          onClick={handleSubmit}
+          disabled={gradeKey === '' || collegeKey === '' || majorKey === ''}
+        >
           {i18n.confirm}
         </Button>
       </View>
