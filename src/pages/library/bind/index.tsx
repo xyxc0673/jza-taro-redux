@@ -24,6 +24,7 @@ import {
 import i18n from '@/i18n'
 
 import './index.scss'
+import { NoticeBar } from '@/components/notice-bar';
 
 enum InputType {
   ID = 'id',
@@ -170,89 +171,92 @@ const Bind: React.FC = () => {
 
   return (
     <View className='bind-page'>
-      <View className='title'>{i18n.libraryReaderLogin.title}</View>
-      <Form className='form' onSubmit={handleSubmit}>
-        <View className={focus(focusState.idFocus)}>
-          <Label className='form-control__label'>
-            {i18n.libraryReaderLogin.idLabel}
-          </Label>
-          <Input
-            id={InputType.ID}
-            value={loginState.id}
-            className='form-control__input'
-            onInput={handleInput}
-            onFocus={() => handleFocus(InputType.ID)}
-            onBlur={() => handleBlur(InputType.ID)}
-            placeholder={i18n.libraryReaderLogin.idPlaceHolder}
+      <NoticeBar text={i18n.unmaintained} visible={true} />
+      <View className='container'>
+        <View className='title'>{i18n.libraryReaderLogin.title}</View>
+        <Form className='form' onSubmit={handleSubmit}>
+          <View className={focus(focusState.idFocus)}>
+            <Label className='form-control__label'>
+              {i18n.libraryReaderLogin.idLabel}
+            </Label>
+            <Input
+              id={InputType.ID}
+              value={loginState.id}
+              className='form-control__input'
+              onInput={handleInput}
+              onFocus={() => handleFocus(InputType.ID)}
+              onBlur={() => handleBlur(InputType.ID)}
+              placeholder={i18n.libraryReaderLogin.idPlaceHolder}
+            />
+            {(loginState.id !== '' || focusState.idFocus) && (
+              <Icon type='clear' onClick={() => handleClear(InputType.ID)} />
+            )}
+          </View>
+          <View className={focus(focusState.pwdFocus)}>
+            <Label className='form-control__label'>
+              {i18n.libraryReaderLogin.pwdLabel}
+            </Label>
+            <Input
+              id={InputType.PWD}
+              value={loginState.pwd}
+              password
+              className='form-control__input'
+              placeholder={i18n.libraryReaderLogin.pwdPlaceHolder}
+              onInput={handleInput}
+              onFocus={() => handleFocus(InputType.PWD)}
+              onBlur={() => handleBlur(InputType.PWD)}
+            />
+            {(loginState.pwd !== '' || focusState.pwdFocus) && (
+              <Icon type='clear' onClick={() => handleClear(InputType.PWD)} />
+            )}
+          </View>
+          <View className={focus(focusState.captchaFocus)}>
+            <Label className='form-control__label'>
+              {i18n.libraryReaderLogin.captchaLabel}
+            </Label>
+            <Input
+              id={InputType.CAPTCHA}
+              value={loginState.captcha}
+              className='form-control__input'
+              placeholder={i18n.libraryReaderLogin.captchaPlaceHolder}
+              onInput={handleInput}
+              onFocus={() => handleFocus(InputType.CAPTCHA)}
+              onBlur={() => handleBlur(InputType.CAPTCHA)}
+              onConfirm={handleSubmit}
+            />
+            <Image
+              className='captcha'
+              src={`data:image/jpeg;base64,${captchaSource}`}
+              onClick={refreshCaptcha}
+            />
+          </View>
+          <QuestionKit
+            size='24'
+            qaList={[
+              {
+                id: 1,
+                q: i18n.libraryReaderLogin.qaList.q1,
+                a: i18n.libraryReaderLogin.qaList.a1,
+              },
+              {
+                id: 2,
+                q: i18n.libraryReaderLogin.qaList.q2,
+                a: i18n.libraryReaderLogin.qaList.a2,
+              },
+              {
+                id: 2,
+                q: i18n.libraryReaderLogin.qaList.q3,
+                a: i18n.libraryReaderLogin.qaList.a3,
+              },
+            ]}
+            modalTitle={i18n.modalHelpTitle}
+            className='help-btn'
           />
-          {(loginState.id !== '' || focusState.idFocus) && (
-            <Icon type='clear' onClick={() => handleClear(InputType.ID)} />
-          )}
-        </View>
-        <View className={focus(focusState.pwdFocus)}>
-          <Label className='form-control__label'>
-            {i18n.libraryReaderLogin.pwdLabel}
-          </Label>
-          <Input
-            id={InputType.PWD}
-            value={loginState.pwd}
-            password
-            className='form-control__input'
-            placeholder={i18n.libraryReaderLogin.pwdPlaceHolder}
-            onInput={handleInput}
-            onFocus={() => handleFocus(InputType.PWD)}
-            onBlur={() => handleBlur(InputType.PWD)}
-          />
-          {(loginState.pwd !== '' || focusState.pwdFocus) && (
-            <Icon type='clear' onClick={() => handleClear(InputType.PWD)} />
-          )}
-        </View>
-        <View className={focus(focusState.captchaFocus)}>
-          <Label className='form-control__label'>
-            {i18n.libraryReaderLogin.captchaLabel}
-          </Label>
-          <Input
-            id={InputType.CAPTCHA}
-            value={loginState.captcha}
-            className='form-control__input'
-            placeholder={i18n.libraryReaderLogin.captchaPlaceHolder}
-            onInput={handleInput}
-            onFocus={() => handleFocus(InputType.CAPTCHA)}
-            onBlur={() => handleBlur(InputType.CAPTCHA)}
-            onConfirm={handleSubmit}
-          />
-          <Image
-            className='captcha'
-            src={`data:image/jpeg;base64,${captchaSource}`}
-            onClick={refreshCaptcha}
-          />
-        </View>
-        <QuestionKit
-          size='24'
-          qaList={[
-            {
-              id: 1,
-              q: i18n.libraryReaderLogin.qaList.q1,
-              a: i18n.libraryReaderLogin.qaList.a1,
-            },
-            {
-              id: 2,
-              q: i18n.libraryReaderLogin.qaList.q2,
-              a: i18n.libraryReaderLogin.qaList.a2,
-            },
-            {
-              id: 2,
-              q: i18n.libraryReaderLogin.qaList.q3,
-              a: i18n.libraryReaderLogin.qaList.a3,
-            },
-          ]}
-          modalTitle={i18n.modalHelpTitle}
-          className='help-btn'
-        />
-        <Button className='btn' formType='submit'>
-          {i18n.confirm}
-        </Button>
-      </Form>
+          <Button className='btn' formType='submit'>
+            {i18n.confirm}
+          </Button>
+        </Form>
+      </View>
     </View>
   )
 }

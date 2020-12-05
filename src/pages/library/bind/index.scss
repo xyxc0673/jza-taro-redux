@@ -2,6 +2,10 @@
 
 .bind-page {
   flex-direction: column;
+}
+
+.bind-page .container {
+  flex-direction: column;
 
   padding: 40px;
 

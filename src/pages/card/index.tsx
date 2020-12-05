@@ -19,6 +19,7 @@ import util from '@/util'
 import i18n from '@/i18n'
 
 import './index.scss'
+import { NoticeBar } from "@/components/notice-bar";
 
 
 interface ITransaction {
@@ -160,6 +161,7 @@ const Card: React.FC = () => {
 
   return (
     <View className='page-card'>
+      <NoticeBar text={i18n.unmaintained} visible={true} />
       <View className='section-balance'>
         <Image
           mode='widthFix'
