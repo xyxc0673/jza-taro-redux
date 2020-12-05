@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Taro from '@tarojs/taro'
+import Taro, { useRouter } from '@tarojs/taro'
 import { View, Form, Button } from '@tarojs/components'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useI18n } from "@i18n-chain/react";
 
 import Tip from '@/tip'
@@ -16,183 +16,149 @@ import i18n from '@/i18n'
 import CustomInput from './CustomInput'
 
 import './index.scss'
+import { NoticeBar } from '@/components/notice-bar';
+import { LoginType } from '@/data/enums/login-type';
 
 const Bind = () => {
   useI18n(i18n)
-  
-  const [id, setId] = useState('')
-  const [eduPwd, setEduPwd] = useState('')
-  const [cardPwd, setCardPwd] = useState('')
+
+  const router = useRouter()
+
+  const isEdu = (router.params.type || LoginType.edu) === LoginType.edu
+
+  const type = isEdu ? '教务系统' : '校园卡'
+
+  const account = useSelector(state => state.edu.account)
+
+  const [id, setId] = useState(account.id)
+  const [pwd, setPwd] = useState(isEdu ? account.eduPwd : account.cardPwd)
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    const account = Taro.getStorageSync('account')
-    setId(account.id || '')
-    setEduPwd(account.eduPwd || '')
-    setCardPwd(account.cardPwd || '')
-  }, [])
-
   const handleSubmit = async () => {
     const {
-      id: _id = '',
-      eduPwd: _eduPwd = '',
-      cardPwd: _cardPwd = '',
-    } = Taro.getStorageSync('account')
+      id: preId = '',
+      eduPwd: preEduPwd = '',
+      cardPwd: preCardPwd = '',
+    } = account
 
-    const eduPwdCheck = ((param) => {
+    const prePwd = isEdu ? preEduPwd : preCardPwd
+
+    const pwdCheck = ((param) => {
       return param && param.length > 5
-    })(eduPwd)
+    })(pwd)
 
-    const cardPwdCheck = ((param) => {
-      return param && param.length > 5
-    })(cardPwd)
-
-    if (id === '' || (eduPwd === '' && cardPwd === '')) {
+    if (id === '' || (pwd === '')) {
       Tip.showToast(i18n.wrongInputTip)
       return
     }
 
-    if (!eduPwdCheck && !cardPwdCheck) {
+    if (!pwdCheck) {
       Tip.showToast(i18n.wrongInputTip)
       return
     }
 
-    const idCheck = _id != id
+    const idCheck = preId != id
 
-    const eduPwdDoubleCheck = eduPwdCheck && _eduPwd != eduPwd
+    const pwdDoubleCheck = pwdCheck && prePwd != pwd
 
-    const cardPwdDoubleCheck = eduPwdCheck && _cardPwd != cardPwd
-
-    console.log(_id, _id != id, idCheck, eduPwdDoubleCheck, cardPwdDoubleCheck)
-    if (!idCheck && !eduPwdDoubleCheck && !cardPwdDoubleCheck) {
+    if (!idCheck && !pwdDoubleCheck) {
       Tip.showToast(i18n.commonBind.noChangeDetected)
       return
     }
 
     console.log('【教务系统鉴权】【开始】')
 
-    const eduRes =
-      ((idCheck && eduPwdCheck) || eduPwdDoubleCheck) &&
+    const login = isEdu ? eduLogin : cardLogin
+
+    const res =
+      ((idCheck && pwdCheck) || pwdDoubleCheck) &&
       (await dispatch<any>(
-        eduLogin({
+        login({
           id: id,
-          pwd: eduPwd,
+          pwd: pwd,
         })
       ))
 
-    const eduBindSuccess = eduRes && eduRes.code === 1
+    const bindSuccess = res && res.code === 1
 
-    if (eduRes && eduRes.code === -1) {
-      console.log('【教务系统鉴权】【失败】')
+    if (res && res.code === -1) {
+      console.log(`【${type}鉴权】【失败】`)
       return
-    } else if (eduRes === undefined) {
+    } else if (res === undefined) {
       return
-    } else if (!eduRes) {
-      console.log('【教务系统鉴权】【跳过】')
+    } else if (!res) {
+      console.log(`【${type}鉴权】【跳过】`)
     } else {
-      console.log('【教务系统鉴权】【成功】')
+      console.log(`【${type}鉴权】【成功】`)
       User.makeChoices(id)
-    }
-
-    console.log(
-      '【校园卡系统鉴权】【开始】',
-      idCheck,
-      cardPwdCheck,
-      cardPwdDoubleCheck
-    )
-
-    const cardRes =
-      ((idCheck && cardPwdCheck) || cardPwdDoubleCheck) &&
-      (await dispatch<any>(
-        cardLogin({
-          id: id,
-          pwd: cardPwd,
-        })
-      ))
-
-    const cardBindSuccess = cardRes && cardRes.code === 1
-
-    if (cardRes && cardRes.code === -1) {
-      console.log('【校园卡系统鉴权】【失败】')
-      return
-    } else if (!cardRes) {
-      console.log('【校园卡系统鉴权】【跳过】')
-    } else {
-      console.log('【校园卡系统鉴权】【成功】')
     }
 
     const accountChanges = { id }
 
-    eduBindSuccess && (accountChanges['eduPwd'] = eduPwd)
-
-    cardBindSuccess && (accountChanges['cardPwd'] = cardPwd)
+    if (bindSuccess) {
+      if (isEdu) {
+        accountChanges['eduPwd'] = pwd
+      } else {
+        accountChanges['cardPwd'] = pwd
+      }
+    }
 
     dispatch(
       setAccount({
-        id: _id,
-        eduPwd: _eduPwd,
-        cardPwd: _cardPwd,
+        ...account,
         ...accountChanges,
       })
     )
 
-    // const router = useRouter()
-    // const { event } = router.params
-
-    // if (event) {
-    //   Taro.eventCenter.trigger(event)
-    // }
-
     Taro.navigateBack()
   }
 
+  const pwdPlaceHolder = isEdu ? i18n.commonBind.eduPwdPlaceHolder : i18n.commonBind.cardPwdPlaceHolder
+  const title = isEdu ? i18n.commonBind.eduTitle : i18n.commonBind.cardTitle
+
   return (
     <View className='bind-page'>
-      <View className='title'>{i18n.commonBind.title}</View>
-      <Form className='form' onSubmit={handleSubmit}>
-        <CustomInput
-          label={i18n.commonBind.idLabel}
-          value={id}
-          onChange={setId}
-          placeholder={i18n.commonBind.idPlaceHolder}
-          password={false}
-        />
-        <CustomInput
-          label={i18n.commonBind.eduPwdLabel}
-          value={eduPwd}
-          onChange={setEduPwd}
-          placeholder={i18n.commonBind.eduPwdPlaceHolder}
-          password
-        />
-        <CustomInput
-          label={i18n.commonBind.cardPwdLabel}
-          value={cardPwd}
-          onChange={setCardPwd}
-          placeholder={i18n.commonBind.cardPwdPlaceHolder}
-          password
-        />
-        <QuestionKit
-          size='24'
-          qaList={[
-            {
-              id: 1,
-              q: i18n.commonBind.qaList.q1,
-              a: i18n.commonBind.qaList.a1,
-            },
-            {
-              id: 2,
-              q: i18n.commonBind.qaList.q2,
-              a: i18n.commonBind.qaList.a2,
-            },
-          ]}
-          modalTitle={i18n.modalHelpTitle}
-          className='help-btn'
-        />
-        <Button className='btn' formType='submit'>
-          {i18n.confirm}
-        </Button>
-      </Form>
+      <NoticeBar text={i18n.unmaintained} visible={!isEdu} />
+      <View className='container'>
+        <View className='title'>{title}</View>
+        <Form className='form' onSubmit={handleSubmit}>
+          <CustomInput
+            label={i18n.commonBind.idLabel}
+            value={id}
+            onChange={setId}
+            placeholder={i18n.commonBind.idPlaceHolder}
+            password={false}
+          />
+          <CustomInput
+            label={i18n.commonBind.pwdLabel}
+            value={pwd}
+            onChange={setPwd}
+            placeholder={pwdPlaceHolder}
+            password
+          />
+          <QuestionKit
+            size='24'
+            qaList={[
+              {
+                id: 1,
+                q: i18n.commonBind.qaList.q1,
+                a: i18n.commonBind.qaList.a1,
+              },
+              {
+                id: 2,
+                q: i18n.commonBind.qaList.q2,
+                a: i18n.commonBind.qaList.a2,
+              },
+            ]}
+            modalTitle={i18n.modalHelpTitle}
+            className='help-btn'
+          />
+          <Button className='btn' formType='submit'>
+            {i18n.confirm}
+          </Button>
+        </Form>
+      </View>
     </View>
   )
 }

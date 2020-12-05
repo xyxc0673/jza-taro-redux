@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import Taro from '@tarojs/taro'
-import { Image, OpenData, Text, View, Button } from '@tarojs/components'
+import { useSelector } from "react-redux";
+import { Image, OpenData, Text, View } from '@tarojs/components'
 import className from 'classnames'
 import { useI18n } from "@i18n-chain/react";
 
-import Tip from '@/tip'
 import Route from '@/route'
-import Messages from '@/messages'
-
-import {} from '@/store/actions/'
 
 import i18n from '@/i18n'
 
 import './index.scss'
+import { LoginType } from "@/data/enums/login-type";
 
 const ICON = {
   edu: {
@@ -30,7 +28,7 @@ const ICON = {
 }
 
 const Me: React.FC = () => {
-  const [activeKey, setActiveKey] = useState()
+  const account = useSelector(state => state.edu.account)
   useI18n(i18n)
 
   const handleListItemClick = key => {
@@ -46,12 +44,10 @@ const Me: React.FC = () => {
     }
   }
 
-  const { id = '', eduPwd = '', cardPwd = '' } = Taro.getStorageSync('account')
-
   const { pwd: opacPwd = '' } = Taro.getStorageSync('opacAccount')
 
-  const navToCommonBind = () => {
-    Route.navTo(Route.path.commonBind)
+  const navToCommonBind = (type: LoginType) => {
+    Route.navTo(Route.path.commonBind, { type })
   }
 
   const navToLibraryBind = () => {
@@ -65,37 +61,37 @@ const Me: React.FC = () => {
   return (
     <View className='page-me'>
       <View className='section-user'>
-        <View className='user-info' onClick={navToCommonBind}>
+        <View className='user-info' onClick={() => navToCommonBind(LoginType.edu)}>
           <OpenData className='user-avatar' type='userAvatarUrl' />
           <View className='user-info-left'>
             <OpenData className='user-nickname' type='userNickName' />
             <Text className='user-account'>
-              {id || i18n.tabbarMe.bindTip}
+              {account.id || i18n.tabbarMe.bindTip}
             </Text>
           </View>
         </View>
         <View className='section-binding'>
-          <View className='binding-item' onClick={navToCommonBind}>
+          <View className='binding-item' onClick={() => navToCommonBind(LoginType.edu)}>
             <Image
               className='binding-item__img'
-              src={eduPwd ? ICON.edu.active : ICON.edu.inactive}
+              src={account.eduPwd ? ICON.edu.active : ICON.edu.inactive}
             ></Image>
             <Text
               className={className('binding-item__text', {
-                'binding-item__text__active': eduPwd
+                'binding-item__text__active': account.eduPwd
               })}
             >
               {i18n.tabbarMe.edu}
             </Text>
           </View>
-          <View className='binding-item' onClick={navToCommonBind}>
+          <View className='binding-item' onClick={() => navToCommonBind(LoginType.card)}>
             <Image
               className='binding-item__img'
-              src={cardPwd ? ICON.card.active : ICON.card.inactive}
+              src={account.cardPwd ? ICON.card.active : ICON.card.inactive}
             ></Image>
             <Text
               className={className('binding-item__text', {
-                'binding-item__text__active': cardPwd
+                'binding-item__text__active': account.cardPwd
               })}
             >
               {i18n.tabbarMe.card}

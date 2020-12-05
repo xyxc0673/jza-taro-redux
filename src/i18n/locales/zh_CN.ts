@@ -9,6 +9,7 @@ const zh_CN = {
   confirm: '确认',
   cancel: '取消',
   loading: '加载中...',
+  search: '检索',
 
   saveSuccess: '保存成功',
   saveFail: '保存失败',
@@ -20,7 +21,9 @@ const zh_CN = {
   clearStorage: '确定要清除数据吗？（注意：该操作会清空本地所有数据）',
 
   shareTitle: '一起去看海呀~',
-  
+
+  unmaintained: '功能失效，暂停使用',
+
   feedback: {
     or: '或者',
     contact: '与开发者对话',
@@ -45,6 +48,11 @@ const zh_CN = {
     card: '校园卡',
     librarySearch: '图书馆',
     libraryReaderCenter: '个人中心'
+  },
+
+  updateManager: {
+    title: '更新提示',
+    content: '新版本已经准备好了，是否重启小程序？',
   },
 
   hello: {
@@ -146,11 +154,13 @@ const zh_CN = {
     }
   },
   commonBind: {
-    title: '统一登录中心',
+    eduTitle: '教务系统登录',
+    cardTitle: '校园卡登录',
     idLabel: '账号',
     idPlaceHolder: '请输入账号',
+    pwdLabel: '密码',
     eduPwdLabel: '教务密码',
-    eduPwdPlaceHolder: '请输入教务密码',
+    eduPwdPlaceHolder: '请输入教务系统密码',
     cardPwdLabel: '校园卡密码',
     cardPwdPlaceHolder: '请输入校园卡密码',
     noChangeDetected: '看起来没有改变账号或者密码哦',

@@ -1,6 +1,11 @@
 @import '@styles/theme.scss';
 
 .bind-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.bind-page .container {
   flex-direction: column;
 
   padding: 40px;

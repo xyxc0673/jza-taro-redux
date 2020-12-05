@@ -12,6 +12,7 @@ const en_US = {
   confirm: 'Confirm',
   cancel: 'Cancel',
   loading: 'Loading...',
+  search: 'Search',
 
   guide: 'Welcome! Tap here to get your schedule or others~',
 
@@ -20,6 +21,8 @@ const en_US = {
   clearStorage: 'Sure to clear storage?',
 
   shareTitle: `Let's go see the sea together~ `,
+
+  unmaintained: 'Unmaintained and Suspended for use',
 
   feedback: {
     or: 'OR',
@@ -45,6 +48,11 @@ const en_US = {
     card: 'Campus Card',
     librarySearch: 'Library',
     libraryReaderCenter: 'Reader Center'
+  },
+
+  updateManager: {
+    title: 'Update Notice',
+    content: 'New version is ready, sure to restart now?',
   },
 
   hello: {
@@ -146,9 +154,11 @@ const en_US = {
     }
   },
   commonBind: {
-    title: 'User Login',
+    eduTitle: 'Edu Login',
+    cardTitle: 'Card Login',
     idLabel: 'Account',
     idPlaceHolder: 'Please input account',
+    pwdLabel: 'Password',
     eduPwdLabel: 'Edu Password',
     eduPwdPlaceHolder: 'Please input edu password',
     cardPwdLabel: 'Card Password',

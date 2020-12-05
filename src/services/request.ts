@@ -8,6 +8,7 @@ import Route from "@/route"
 import { CARD_INIT } from "@/services/constant"
 import { User } from "./user"
 import i18n from "@/i18n"
+import { LoginType } from "@/data/enums/login-type"
 
 const checkHttpStatus = res => {
   if (res.statusCode >= 200 && res.statusCode < 300) {
@@ -110,7 +111,7 @@ export default {
       )
 
       if (res.confirm) {
-        Route.navTo(Route.path.commonBind)
+        Route.navTo(Route.path.commonBind, { type: LoginType.edu })
       }
 
       throw "Error：账号未绑定"
@@ -146,7 +147,7 @@ export default {
       )
 
       if (res.confirm) {
-        Route.navTo(Route.path.commonBind, { event: CARD_INIT })
+        Route.navTo(Route.path.commonBind, { type: LoginType.card })
       }
 
       throw "Error：账号未绑定"
