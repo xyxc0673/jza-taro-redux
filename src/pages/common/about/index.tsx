@@ -30,7 +30,13 @@ const About: React.FC = () => {
   })
 
   const [activeModal, setActiveModal] = useState('')
+  const [modalVisible, toggleModalVisible] = useState(false)
   const [versionClickedTimes, setVersionClickTimes] = useState(0)
+
+  const openModal = (_activeModal) => {
+    setActiveModal(_activeModal)
+    toggleModalVisible(true)
+  }
 
   const renderChangeLog = (
     <View className='changelog'>
@@ -109,7 +115,7 @@ const About: React.FC = () => {
               )
             }
             if (versionClickedTimes + 1 >= 6) {
-              setActiveModal(MODAL_TYPE.VERSION)
+              openModal(MODAL_TYPE.VERSION)
               setVersionClickTimes(0)
             } else {
               setVersionClickTimes(versionClickedTimes + 1)
@@ -183,7 +189,7 @@ const About: React.FC = () => {
             <View className='item-text'>
               <Text
                 className='link-title'
-                onClick={() => setActiveModal(MODAL_TYPE.THANKS)}
+                onClick={() => openModal(MODAL_TYPE.THANKS)}
               >
                 {i18n.about.thanksList}
               </Text>
@@ -204,9 +210,9 @@ const About: React.FC = () => {
         </View>
       </View>
       <FloatBottomModal
-        visible={activeModal !== ''}
+        visible={modalVisible}
         title={activeModal}
-        onClose={() => setActiveModal('')}
+        onClose={() => toggleModalVisible(false)}
       >
         {activeModal === MODAL_TYPE.CHANGELOG && renderChangeLog}
         {activeModal === MODAL_TYPE.THANKS && renderThanks}

@@ -9,11 +9,11 @@ $modal-max-height: 800px;
   width: 100%;
   height: 100%;
 
-  transition: all 200ms ease;
-  z-index: -100;
+  transition: all 300ms ease;
+  visibility: hidden;
 
   &__active {
-    z-index: 100;
+    visibility: visible;
 
     .modal-container {
       bottom: 0;
@@ -30,10 +30,10 @@ $modal-max-height: 800px;
   background-color: #fff;
   position: absolute;
   left: 0;
-  bottom: -500px;
+  bottom: -600px;
   padding: 50px;
 
-  transition: all 300ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: all 300ms ease;
 
   display: flex;
   flex-direction: column;
