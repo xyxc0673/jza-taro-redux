@@ -1,11 +1,12 @@
+import Taro from '@tarojs/taro'
+import i18n from '@/i18n'
+import Tip from './tip'
+
 /*
 function str2ab()
 Convert string to array buffer
 See https://stackoverflow.com/questions/6965107/converting-between-strings-and-arraybuffers
 */
-import Messages from '@/messages'
-import i18n from '@/i18n'
-
 const str2ab = str => {
   let buf = new ArrayBuffer(str.length * 1)
   let bufView = new Uint8Array(buf)
@@ -56,6 +57,22 @@ const getCurrDay = () => {
   return currDay
 }
 
+const checkForUpdate = () => {
+  console.log("检测更新")
+
+  const updateManager = Taro.getUpdateManager()
+
+  updateManager.onUpdateReady(function () {
+    console.log("检测到新版本")
+
+    Tip.showModal(i18n.updateManager.title, i18n.updateManager.content, true).then(res => {
+      if (res.confirm) {
+        updateManager.applyUpdate()
+      }
+    })
+  })
+}
+
 export default {
   str2ab,
   transformWeekType,
@@ -63,5 +80,6 @@ export default {
   formatTime,
   deltaDate,
   getCurrDay,
-  getDayList
+  getDayList,
+  checkForUpdate
 }
