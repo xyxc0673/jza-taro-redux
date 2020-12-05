@@ -1,5 +1,6 @@
+import Taro from '@tarojs/taro'
 import React, { useEffect, useState, useCallback } from 'react'
-import { View, Text, Picker, Image, Button } from '@tarojs/components'
+import { View, Text, Picker, Image, Button, Icon } from '@tarojs/components'
 import { useSelector, useDispatch } from 'react-redux'
 import className from 'classnames'
 import { useI18n } from "@i18n-chain/react";
@@ -33,7 +34,7 @@ interface IClass {
 
 const Recommend = () => {
   useI18n(i18n)
-  
+
   const [showBottmPanel, setShowBottmPanel] = useState(false)
   const [gradeValue, setGradeValue] = useState(4)
   const [collegeValue, setCollegeValue] = useState(0)
@@ -68,7 +69,7 @@ const Recommend = () => {
 
   const dispatch = useDispatch()
 
-  const handleGradeChange = 
+  const handleGradeChange =
     useCallback((e) => {
       setGradeKey(grade[e.detail.value].key)
       setGradeValue(e.detail.value)
@@ -88,7 +89,7 @@ const Recommend = () => {
       if (college[e.detail.value].key && gradeKey !== '') {
         genYearAndSemesterRange(
           college[e.detail.value].key.slice(0, 2) +
-            gradeKey.toString().slice(2, 4)
+          gradeKey.toString().slice(2, 4)
         )
       }
     },
@@ -102,6 +103,10 @@ const Recommend = () => {
     },
     [major]
   )
+
+  useEffect(() => {
+    Taro.setNavigationBarTitle({ title: '班级课表' })
+  }, [])
 
   useEffect(() => {
     dispatch(eduLoginForToken())
@@ -121,7 +126,7 @@ const Recommend = () => {
 
   useEffect(() => {
     if (college.length > 0) {
-      handleCollegeChange({ detail: {value: collegeValue} })
+      handleCollegeChange({ detail: { value: collegeValue } })
     }
   }, [college, collegeValue, handleCollegeChange])
 
@@ -194,7 +199,7 @@ const Recommend = () => {
         gradeValue: gradeValue,
         classKey: scheduleObj.classCode,
         classValue: scheduleObj.className,
-        pin:  recommendScheduleList.findIndex(
+        pin: recommendScheduleList.findIndex(
           (item) => id === item.id
         ) !== -1
       }),
@@ -296,7 +301,7 @@ const Recommend = () => {
           onClick={handleSubmit}
           disabled={gradeKey === '' || collegeKey === '' || majorKey === ''}
         >
-          {i18n.confirm}
+          {i18n.search}
         </Button>
       </View>
       <View className='storage-schedule' onClick={navToScheduleSetting}>
@@ -316,42 +321,32 @@ const Recommend = () => {
               : '',
           }}
         >
-          <View
-            className='panel-header'
-            onTouchStart={(e) => {
-              setStartY(e.touches[0].clientY)
-            }}
-            onTouchMove={(e) => {
-              setOffsetSize(e.touches[0].clientY - startY)
-            }}
-            onTouchEnd={(e) => {
-              if (offsetSize > 50) {
-                setShowBottmPanel(false)
-              }
-              setOffsetSize(0)
-            }}
-          >
-            <View className='panel-control' />
-          </View>
-
-          <Picker
-            className='picker grade-semester-picker'
-            mode='multiSelector'
-            range={yearSemester}
-            rangeKey='name'
-            value={yearSemesterValue}
-            onChange={handleYearSemesterChange}
-          >
-            <View className='picker-container' hoverClass='picker--hover'>
-              <View className='picker-left'>
-                <Text className='picker-text'>{renderYearSemester()}</Text>
+          <View className='panel-header'>
+            <Picker
+              className='picker grade-semester-picker'
+              mode='multiSelector'
+              range={yearSemester}
+              rangeKey='name'
+              value={yearSemesterValue}
+              onChange={handleYearSemesterChange}
+            >
+              <View className='picker-container' hoverClass='picker--hover'>
+                <View className='picker-left'>
+                  <Text className='picker-text'>{renderYearSemester()}</Text>
+                </View>
+                <Image
+                  className='picker-icon'
+                  src={require('../../../../assets/images/arrow-down-s-line.svg')}
+                />
               </View>
-              <Image
-                className='picker-icon'
-                src={require('../../../../assets/images/arrow-down-s-line.svg')}
-              />
-            </View>
-          </Picker>
+            </Picker>
+            <Icon type='clear'
+              onClick={() => setShowBottmPanel(false)}
+              size='50px'
+              color='#e7e7e7'
+              className='panel-close-btn'
+            />
+          </View>
           <View className='class-list'>
             {classList.map((item: IClass, index) => {
               return (
@@ -360,7 +355,7 @@ const Recommend = () => {
                   className='class-item'
                   onClick={() => fetchSchedule(item)}
                 >
-                  <Text className='class-index'>{index}</Text>
+                  <Text className='class-index'>{index + 1}</Text>
                   <Text className='class-name'>{item.className}</Text>
                 </View>
               )
