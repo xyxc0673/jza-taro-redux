@@ -1,0 +1,14 @@
+.tip {
+    background-color: #ffc63f;
+    font-size: 26px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 1px 1px 8px 1px #ccc;
+}
+
+.tip-close {
+    position: absolute;
+    right: 10px;
+}
