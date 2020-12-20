@@ -1,4 +1,4 @@
-$modal-max-height: 800px;
+$modal-height: 800px;
 
 .modal-background {
   position: fixed;
@@ -12,6 +12,8 @@ $modal-max-height: 800px;
   transition: all 300ms ease;
   visibility: hidden;
 
+  z-index: 1000;
+
   &__active {
     visibility: visible;
 
@@ -23,14 +25,13 @@ $modal-max-height: 800px;
 
 .modal-container {
   width: 100%;
-  min-height: 600px;
-  max-height: $modal-max-height;
+  max-height: $modal-height;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   background-color: #fff;
   position: absolute;
   left: 0;
-  bottom: -600px;
+  bottom: -$modal-height;
   padding: 50px;
 
   transition: all 300ms ease;
