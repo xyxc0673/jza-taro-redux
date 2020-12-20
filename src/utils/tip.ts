@@ -1,6 +1,5 @@
 import Taro from '@tarojs/taro'
 
-import Messages from '@/messages'
 import i18n from '@/i18n'
 
 class Tip {
@@ -42,7 +41,7 @@ class Tip {
   }
 
   static async showModal(
-    title: string = Messages.modalDefaultTitle,
+    title: string = i18n.modalDefaultTitle,
     content: string,
     showCancel: boolean = true
   ) {

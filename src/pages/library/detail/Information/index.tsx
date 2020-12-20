@@ -1,10 +1,9 @@
 import React from "react";
-import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image } from '@tarojs/components'
-import Messages from '@/messages'
 
 import './index.scss'
 import { IBook } from "@/interfaces/book";
+import i18n from "@/i18n";
 
 
 interface IProps {
@@ -19,7 +18,7 @@ const Information: React.FC<IProps> = props => {
         <Text>作者：{book.author}</Text>
         <Text>出版社：{book.publisher}</Text>
         <Text>出版年份：{book.publishYear}</Text>
-        <Text>索书号: {book.callNo || Messages.libraryBook.emptyCallNo}</Text>
+        <Text>索书号: {book.callNo || i18n.libraryBook.emptyCallNo}</Text>
       </View>
       <Image
         className='comp-infomation-cover'

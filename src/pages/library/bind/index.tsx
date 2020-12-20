@@ -15,7 +15,6 @@ import { useI18n } from "@i18n-chain/react";
 import QuestionKit from '@/components/question-kit'
 
 import Tip from '@/tip'
-import Messages from '@/messages'
 
 import {
   fetchLibraryReaderCaptcha,
@@ -126,7 +125,7 @@ const Bind: React.FC = () => {
     const { id, pwd, captcha } = loginState
 
     if (id === '' || pwd === '' || captcha === '') {
-      Tip.showToast(Messages.wrongInputTip)
+      Tip.showToast(i18n.wrongInputTip)
       return
     }
 

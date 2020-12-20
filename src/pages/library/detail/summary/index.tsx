@@ -1,9 +1,8 @@
 import React from "react";
-import Taro from '@tarojs/taro'
 import { View, Text, ScrollView } from '@tarojs/components'
-import Messages from '@/messages'
 
 import './index.scss'
+import i18n from "@/i18n";
 
 interface IProps {
   content: string
@@ -14,10 +13,10 @@ const Summary: React.FC<IProps> = props => {
 
   return (
     <View>
-      <View className='title'>{Messages.libraryDetail.summaryTitle}</View>
+      <View className='title'>{i18n.libraryDetail.summaryTitle}</View>
       <ScrollView className='scroll-view' scrollY>
         <Text className='content'>
-          {content || Messages.libraryDetail.summaryEmpty}
+          {content || i18n.libraryDetail.summaryEmpty}
         </Text>
       </ScrollView>
     </View>

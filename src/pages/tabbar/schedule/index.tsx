@@ -6,7 +6,6 @@ import className from 'classnames'
 import { useI18n } from "@i18n-chain/react";
 
 import Route from '@/route'
-import Messages from '@/messages'
 import Edu from '@/services/edu'
 import { scheduleSettingList } from '@/services/constant'
 import ScheduleTable from '@/components/schedule-table'
@@ -176,11 +175,10 @@ const TabbarSchedule: React.FC = () => {
   const handleDelete = async () => {
     const course = selectedCourse
     const res = await Tip.showModal(
-      Messages.modalDefaultTitle,
-      Messages.eduSchedule.manage.deleteCourse.replace(
-        '${courseName}',
-        course.courseName
-      )
+      i18n.modalDefaultTitle,
+      i18n.eduSchedule.manage.deleteCourse({
+        courseName: course.courseName
+      })
     )
 
     if (!res.confirm) {

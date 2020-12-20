@@ -24,6 +24,12 @@ const en_US = {
 
   unmaintained: 'Unmaintained and Suspended for use',
 
+  serverErrorText: 'Something wrong happended. Try again later~',
+
+  sessionExpiredServer: 'Please login again',
+
+  networkTimeout: 'Request timeout',
+
   feedback: {
     or: 'OR',
     contact: 'Contact',

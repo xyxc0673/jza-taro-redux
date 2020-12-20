@@ -59,3 +59,8 @@ export const BACKGROUND_IMAGE_STYLE = {
 }
 
 export const BOOK_SHELF = 'bookShelf'
+
+export const REQUEST = {
+  NOT_LOGIN: '未登录',
+  SESSION_EXPIRED_SERVER: '缓存不存在或已过期',
+}

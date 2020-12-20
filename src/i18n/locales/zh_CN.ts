@@ -24,6 +24,12 @@ const zh_CN = {
 
   unmaintained: '功能失效，暂停使用',
 
+  serverErrorText: '服务器出了点问题，稍后再尝试~',
+
+  sessionExpiredServer: '登录缓存已过期',
+
+  networkTimeout: '请求超时',
+
   feedback: {
     or: '或者',
     contact: '与开发者对话',

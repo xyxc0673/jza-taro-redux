@@ -1,5 +1,4 @@
 import Taro from '@tarojs/taro'
-import Messages from '@/messages'
 import i18n from '@/i18n'
 import version from '@/data/version'
 import { LANGUAGE } from './constant'

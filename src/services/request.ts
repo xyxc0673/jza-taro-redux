@@ -1,28 +1,26 @@
 import Taro from "@tarojs/taro"
 
 import Tip from "@/tip"
-import Messages from "@/messages"
 import util from "@/util"
 import store from "@/store/index"
 import Route from "@/route"
-import { CARD_INIT } from "@/services/constant"
-import { User } from "./user"
 import i18n from "@/i18n"
 import { LoginType } from "@/data/enums/login-type"
+import { REQUEST } from "./constant"
 
 const checkHttpStatus = res => {
   if (res.statusCode >= 200 && res.statusCode < 300) {
     return res.data
   }
-  throw new Error(Messages.serverErrorText)
+  throw new Error(i18n.serverErrorText)
 }
 
 const checkSuccess = (res, slientMode) => {
   if (
-    res.data === Messages.sessionExpiredServer ||
-    res.data === Messages.notLogin
+    res.data === REQUEST.SESSION_EXPIRED_SERVER ||
+    res.data === REQUEST.NOT_LOGIN
   ) {
-    throw new Error(Messages.sessionExpiredServer)
+    throw new Error(i18n.sessionExpiredServer)
   }
 
   if (res.code.toString() === "-1") {
@@ -30,8 +28,8 @@ const checkSuccess = (res, slientMode) => {
       Tip.showToast(`${res.msg}`)
     } else {
       Tip.showModal(
-        res.msg || Messages.modalDefaultTitle,
-        res.data || Messages.serverErrorText,
+        res.msg || i18n.modalDefaultTitle,
+        res.data || i18n.serverErrorText,
         false
       )
     }
@@ -49,7 +47,7 @@ export default {
   baseRequest(params, method?): any {
     const options = {
       isShowLoading: false,
-      loadingText: Messages.loadingText,
+      loadingText: i18n.loading,
       method: method ? method : "GET",
       ...params
     }
@@ -71,20 +69,20 @@ export default {
 
           console.error(`[${new Date()}][Error][Request.ts]: ${err}`)
 
-          if (err.message === Messages.sessionExpiredServer) {
+          if (err.message === REQUEST.SESSION_EXPIRED_SERVER) {
             return Promise.reject({
-              message: Messages.sessionExpiredServer,
+              message: i18n.sessionExpiredServer,
               ...err
             })
           }
 
           if (err.errMsg === "request:fail timeout") {
-            Tip.showToast(Messages.networkTimeout)
+            Tip.showToast(i18n.networkTimeout)
           } else {
-            Tip.showToast(Messages.serverErrorText)
+            Tip.showToast(i18n.serverErrorText)
           }
 
-          return Promise.reject({ message: Messages.serverErrorText, ...err })
+          return Promise.reject({ message: i18n.serverErrorText, ...err })
         }
       )
   },

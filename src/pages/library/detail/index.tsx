@@ -2,14 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react'
 import Taro, { useRouter } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { useSelector, useDispatch } from 'react-redux'
-import Messages from '@/messages'
 import { fetchLibraryBookDetail } from '@/store/actions/library'
 
 import './index.scss'
 
-import { IBook } from '../library.interface'
 import CollectionList from './collection-list'
 import Information from './Information'
+import i18n from '@/i18n'
+import { IBook } from '@/interfaces/book'
 
 const Detail = () => {
   const [currBook, setCurrBook] = useState({} as IBook)
@@ -24,7 +24,7 @@ const Detail = () => {
   const bookSelected = router.params
 
   useEffect(() => {
-    Taro.setNavigationBarTitle({ title: Messages.libraryDetail.title })
+    Taro.setNavigationBarTitle({ title: i18n.libraryDetail.title })
     dispatch(fetchLibraryBookDetail(bookSelected))
   }, [dispatch, bookSelected])
 

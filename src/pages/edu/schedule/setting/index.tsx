@@ -6,7 +6,6 @@ import { useI18n } from "@i18n-chain/react";
 
 import Tip from '@/tip'
 import Route from '@/route'
-import Messages from '@/messages'
 import User from '@/services/user'
 
 import {
