@@ -117,6 +117,7 @@
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   z-index: 2;
+  padding: 0;
 
   &__active {
     top: 440px;
@@ -127,7 +128,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 5px;
-  margin: 20px 20px 0;
+  margin: 40px 40px 0;
 }
 
 .panel-close-btn {
@@ -147,36 +148,45 @@
 }
 
 .class-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
   overflow: scroll;
-
-  padding: 20px 40px;
-
-  background-color: #f5f3f3;
-  border-radius: 50px;
-  margin: 20px;
+  padding: 0 40rpx;
+  border-radius: 50rpx;
+  margin: 30rpx 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
   flex: 1;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: start;
 }
 
 .class-item {
-  margin: 10px 0;
-  padding: 10px 0;
+  margin: 10rpx 0;
+  padding: 10rpx 0;
   align-items: center;
+  width: 48.5%;
+  height: 90px;
+  background-color: rgba(245, 243, 243, 0.6);
+  border-radius: 100px;
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .class-index {
   margin-right: 30px;
-  border: solid 5px #ccc;
+  // border: solid 5px #ccc;
   border-radius: 100%;
   width: 40px;
-  height: 40px;
   text-align: center;
   vertical-align: middle;
   line-height: 40px;
   font-weight: bold;
-  color: #999;
-  font-size: 25px;
+  color: #ccc;
+  // font-size: 25px;
 }
 
 .storage-schedule {
@@ -187,4 +197,11 @@
 
   font-size: 25px;
   color: #999999;
+  align-items: center;
+
+  &__icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
 }

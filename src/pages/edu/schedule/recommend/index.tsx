@@ -64,9 +64,6 @@ const Recommend = () => {
     (state) => state.edu.recommendClass
   )
 
-  const [startY, setStartY] = useState(0)
-  const [offsetSize, setOffsetSize] = useState(0)
-
   const dispatch = useDispatch()
 
   const handleGradeChange =
@@ -105,7 +102,7 @@ const Recommend = () => {
   )
 
   useEffect(() => {
-    Taro.setNavigationBarTitle({ title: '班级课表' })
+    Taro.setNavigationBarTitle({ title: i18n.route.scheduleRecommend })
   }, [])
 
   useEffect(() => {
@@ -178,7 +175,7 @@ const Recommend = () => {
       })
     )
 
-    if (res.data.schedule.length === 0) {
+    if (res && res.data.schedule.length === 0) {
       Tip.showToast(i18n.eduSchedule.setting.emptySchedule)
       return
     }
@@ -305,6 +302,7 @@ const Recommend = () => {
         </Button>
       </View>
       <View className='storage-schedule' onClick={navToScheduleSetting}>
+        <Image className='storage-schedule__icon' src={require('../../../../assets/images/list-unordered.svg')} />
         <Text>{i18n.eduSchedule.recommend.seeLocalSchedule}</Text>
       </View>
       <View
@@ -314,12 +312,6 @@ const Recommend = () => {
       >
         <View
           className={className('panel', { panel__active: showBottmPanel })}
-          style={{
-            transform: showBottmPanel ? `translate3d(0,${offsetSize},0)` : '',
-            WebkitTransform: showBottmPanel
-              ? `translate3d(0,${offsetSize}px,0)`
-              : '',
-          }}
         >
           <View className='panel-header'>
             <Picker

@@ -237,7 +237,7 @@ const en_US = {
       blur: 'Blur'
     },
     recommend: {
-      seeLocalSchedule: 'Local Class Schedule',
+      seeLocalSchedule: 'View Local Class Schedule',
       loading: 'Loading',
       noData: 'No data',
       grade: ['{{grade}}', { grade: undefined }],
