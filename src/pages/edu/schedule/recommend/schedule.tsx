@@ -276,6 +276,9 @@ const RecommendSchedule = () => {
           sessionList={sessionList}
           onCourseClick={handleCourseClick}
           changeWeek={(value: number) => setSelectedWeek(selectedWeek + value)}
+          backWeekVisible={currWeek !== selectedWeek}
+          selectedWeek={selectedWeek}
+          onGoBack={() => setSelectedWeek(currWeek)}
         />
       )}
     </View>

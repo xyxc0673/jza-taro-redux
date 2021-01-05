@@ -102,7 +102,6 @@ const TabbarSchedule: React.FC = () => {
     }
 
     initSchedule(selectedWeek)
-    switchWeek(selectedWeek)
   }, [selectedWeek, initSchedule, switchWeek])
 
   const selectedWeekStr = selectedWeek >= 1 && selectedWeek <= 20
@@ -242,6 +241,12 @@ const TabbarSchedule: React.FC = () => {
         backgroundStyle={setting.schedule.imageStyle}
         onCourseClick={handleCourseClick}
         changeWeek={(value: number) => setSelectedWeek(selectedWeek + value)}
+        backWeekVisible={currWeek !== selectedWeek}
+        selectedWeek={selectedWeek}
+        onGoBack={() => {
+          setSelectedWeek(currWeek)
+          console.log(currWeek, selectedWeek)
+        }}
       />
     </View>
   )

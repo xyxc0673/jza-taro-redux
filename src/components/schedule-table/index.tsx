@@ -7,6 +7,7 @@ import { BACKGROUND_IMAGE_STYLE } from '@/services/constant'
 import { ICourse } from '@/interfaces/couese'
 
 import './index.scss'
+import i18n from "@/i18n";
 
 interface IDayDate {
   date: string
@@ -23,6 +24,9 @@ interface IProps {
   onCourseClick: Function
   headerClass?: any
   changeWeek: Function
+  backWeekVisible: boolean,
+  selectedWeek: number
+  onGoBack: Function
 }
 
 const ScheduleTable: React.FC<IProps> = props => {
@@ -33,7 +37,10 @@ const ScheduleTable: React.FC<IProps> = props => {
     customHeaderStyle,
     background,
     backgroundStyle = 0,
-    onCourseClick
+    onCourseClick,
+    backWeekVisible,
+    selectedWeek,
+    onGoBack,
   } = props
 
   const [currDate] = useState(
@@ -135,6 +142,16 @@ const ScheduleTable: React.FC<IProps> = props => {
   })
   return (
     <View className='schedule' onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+      <View
+        className={className('back-week', {
+          'back-week--visible': backWeekVisible
+        })}
+        onClick={() => onGoBack()}
+      >
+        <Text className='back-week__current'>{i18n.eduSchedule.editCourse.week({ week: selectedWeek })}</Text>
+        <Image className='back-week__image' src={require('../../assets/images/arrow-go-back-fill.svg')} />
+      </View>
+
       {background && (
         <Image
           className={backgroundClass}

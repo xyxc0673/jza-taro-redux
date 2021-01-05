@@ -183,3 +183,38 @@ $week-tab-height: 100px;
     filter: blur(10px);
   }
 }
+
+.back-week {
+  z-index: 100;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: -100px;
+  background-color:#00b899;
+  width: 250px;
+  height: 60px;
+  border-radius: 30px;
+  padding: 0 20px;
+  overflow: hidden;
+
+  align-items: center;
+
+  box-shadow: 0.08533rem 0.21333rem 0.64rem 0 rgba(0,0,0,.1);
+  transition: all 0.1s linear;
+
+  &--visible {
+    bottom: 100px;
+  }
+}
+
+.back-week__current {
+  flex: 1;
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+}
+
+.back-week__image {
+  width: 35px;
+  height: 35px;
+}
