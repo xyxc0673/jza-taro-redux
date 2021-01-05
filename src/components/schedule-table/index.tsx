@@ -85,15 +85,24 @@ const ScheduleTable: React.FC<IProps> = props => {
       if (deltaX > deltaY) {
         if (touchMoveX - touchStartX <= -30) {
           changeWeek && changeWeek(1)
+          clearTouchCoor()
         }
 
         if (touchMoveX - touchStartX >= 30) {
           changeWeek && changeWeek(-1)
+          clearTouchCoor()
         }
       }
     },
     [touchStartX, touchStartY, touchMoveX, touchMoveY],
   )
+
+  const clearTouchCoor = () => {
+    setTouchStartX(0)
+    setTouchStartY(0)
+    setTouchMoveX(0)
+    setTouchMoveY(0)
+  }
 
   const renderSidebar = sessionList => {
     return (
