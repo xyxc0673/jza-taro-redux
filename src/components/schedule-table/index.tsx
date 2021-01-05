@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Image, Text } from '@tarojs/components'
+import React, { useCallback, useState } from "react";
+import { View, Image, Text, ITouchEvent } from '@tarojs/components'
 import className from 'classnames'
 
 import Common from '@/services/common'
@@ -20,8 +20,9 @@ interface IProps {
   customHeaderStyle?: any
   background?: string
   backgroundStyle?: number
-  onCourseClick: Function,
+  onCourseClick: Function
   headerClass?: any
+  changeWeek: Function
 }
 
 const ScheduleTable: React.FC<IProps> = props => {
@@ -35,30 +36,57 @@ const ScheduleTable: React.FC<IProps> = props => {
     onCourseClick
   } = props
 
-  const [currDate, setCurrDate] = useState(
+  const [currDate] = useState(
     `${new Date().getMonth() + 1}/${new Date().getDate()}`
   )
-  const createCourseElem = course => {
-    if (course.flex !== 0) {
-      return (
-        <View
-          hoverClass='course__hover'
-          hoverStayTime={100}
-          key={course}
-          className='course'
-          style={{
-            flex: course.flex,
-            backgroundColor: course.color,
-            padding: `${course.flex > 1 ? (course.flex - 1) * 2 : 0}rpx 0.25rem`
-          }}
-          onClick={() => onCourseClick(course)}
-        >
-          <Text className='course-title'>{course.courseName}</Text>
-          <Text className='course-location'>{course.location}</Text>
-        </View>
-      )
-    }
-  }
+
+  const [touchStartX, setTouchStartX] = useState(0)
+  const [touchStartY, setTouchStartY] = useState(0)
+  const [touchMoveX, setTouchMoveX] = useState(0)
+  const [touchMoveY, setTouchMoveY] = useState(0)
+
+  const handleTouchStart = useCallback(
+    (e: ITouchEvent) => {
+      setTouchStartX(e.touches[0].pageX)
+      setTouchStartY(e.touches[0].pageY)
+    },
+    [],
+  )
+
+  const handleTouchMove = useCallback(
+    (e: ITouchEvent) => {
+      setTouchMoveX(e.touches[0].pageX)
+      setTouchMoveY(e.touches[0].pageY)
+    },
+    [],
+  )
+
+  const handleTouchEnd = useCallback(
+    () => {
+      const { changeWeek } = props
+      let deltaX = touchMoveX - touchStartX
+      let deltaY = touchMoveY - touchStartY
+
+      if (Math.sign(deltaX) === -1) {
+        deltaX *= -1
+      }
+
+      if (Math.sign(deltaY) === -1) {
+        deltaY *= -1
+      }
+
+      if (deltaX > deltaY) {
+        if (touchMoveX - touchStartX <= -30) {
+          changeWeek && changeWeek(1)
+        }
+
+        if (touchMoveX - touchStartX >= 30) {
+          changeWeek && changeWeek(-1)
+        }
+      }
+    },
+    [touchStartX, touchStartY, touchMoveX, touchMoveY],
+  )
 
   const renderSidebar = sessionList => {
     return (
@@ -106,7 +134,7 @@ const ScheduleTable: React.FC<IProps> = props => {
     'schedule-background__blur': backgroundStyle === BACKGROUND_IMAGE_STYLE.BLUR
   })
   return (
-    <View className='schedule'>
+    <View className='schedule' onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
       {background && (
         <Image
           className={backgroundClass}
@@ -137,10 +165,9 @@ const ScheduleTable: React.FC<IProps> = props => {
                       className='cell course'
                       style={{
                         flex: course.flex,
-                        backgroundColor: course.color,
-                        padding: `${
-                          course.flex > 1 ? (course.flex - 1) * 2 : 0
-                        }rpx 0.25rem`
+                        backgroundColor: course.currentColor,
+                        padding: `${course.flex > 1 ? (course.flex - 1) * 2 : 0
+                          }rpx 0.25rem`
                       }}
                       onClick={() => onCourseClick(course)}
                     >

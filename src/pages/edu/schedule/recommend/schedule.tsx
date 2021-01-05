@@ -36,6 +36,7 @@ const RecommendSchedule = () => {
 
   const dispatch = useDispatch()
 
+  const [selectedWeek, setSelectedWeek] = useState(currWeek)
   const [selectedCourse, setSelectedCourse] = useState({} as ICourse)
   const [showCourseModal, setShowCourseModal] = useState(false)
   const [id, setId] = useState('')
@@ -95,16 +96,16 @@ const RecommendSchedule = () => {
   }, [routerParams])
 
   useEffect(() => {
-    const _dayDateList = Edu.getDayDate(currWeek)
+    const _dayDateList = Edu.getDayDate(selectedWeek)
     const _scheduleTable = Edu.initSchedule(
       [...recommendSchedule],
-      currWeek,
+      selectedWeek,
       -1,
       true
     )
     const _scheduleTab = Edu.initSchedule(
       [...recommendSchedule],
-      currWeek,
+      selectedWeek,
       -1,
       false,
       true
@@ -113,7 +114,7 @@ const RecommendSchedule = () => {
     setScheduleTable(_scheduleTable)
     setScheduleTab(_scheduleTab)
     setDayDateList(_dayDateList)
-  }, [currWeek, recommendSchedule])
+  }, [selectedWeek, recommendSchedule])
 
   useEffect(() => {
     setSaved(
@@ -274,6 +275,7 @@ const RecommendSchedule = () => {
           schedule={scheduleTable}
           sessionList={sessionList}
           onCourseClick={handleCourseClick}
+          changeWeek={(value: number) => setSelectedWeek(selectedWeek + value)}
         />
       )}
     </View>

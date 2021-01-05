@@ -14,7 +14,8 @@ import CourseModal from '@/components/course-modal'
 import {
   setEditingCourse,
   setCustomSchedule,
-  setMySchedule
+  setMySchedule,
+  setCurrWeek
 } from '@/store/actions/edu'
 import { EditMode } from '@/data/enums/edit-mode'
 import Tip from '@/tip'
@@ -65,7 +66,7 @@ const TabbarSchedule: React.FC = () => {
 
   const [schedule, setSchedule] = useState([] as Array<any>)
   const [dayDateList, setDayDateList] = useState([] as Array<any>)
-  const [selectedWeek, setSelectedWeek] = useState(0)
+  const [selectedWeek, setSelectedWeek] = useState(currWeek)
   const [showWeekTab, setShowWeekTab] = useState(false)
   const [selectedCourse, setSelectedCourse] = useState({} as ICourse)
   const [showCourseModal, setShowCourseModal] = useState(false)
@@ -96,17 +97,13 @@ const TabbarSchedule: React.FC = () => {
   )
 
   useEffect(() => {
-    if (!currWeek) {
+    if (!selectedWeek) {
       return
     }
 
-    initSchedule(currWeek)
-    switchWeek(currWeek)
-  }, [currWeek, initSchedule, switchWeek])
-
-  useEffect(() => {
-    initSchedule(currWeek)
-  }, [mySchedule, customSchedule, setting, initSchedule, currWeek])
+    initSchedule(selectedWeek)
+    switchWeek(selectedWeek)
+  }, [selectedWeek, initSchedule, switchWeek])
 
   const selectedWeekStr = selectedWeek >= 1 && selectedWeek <= 20
   ? i18n.eduSchedule.editCourse.week({ week: selectedWeek })
@@ -244,6 +241,7 @@ const TabbarSchedule: React.FC = () => {
         }
         backgroundStyle={setting.schedule.imageStyle}
         onCourseClick={handleCourseClick}
+        changeWeek={(value: number) => setSelectedWeek(selectedWeek + value)}
       />
     </View>
   )
