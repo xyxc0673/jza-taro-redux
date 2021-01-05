@@ -201,6 +201,14 @@ const en_US = {
     advanced: 'Advanced',
     category: 'Category',
     level: 'Level',
+    credit: 'Credit',
+    point: 'Point',
+    searchTitle: [
+      'Total {{scoreLength}}',
+      {
+        scoreLength: 0
+      }
+    ],
     qaList: {
       q1: 'Rules',
       a1: 'A > 90, 90 < B <= 80, 80 < C <= 70, 70 < D <= 60, E < 60',

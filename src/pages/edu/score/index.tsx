@@ -19,7 +19,7 @@ import "./index.scss";
 
 const Score: React.FC = () => {
   useI18n(i18n)
-  
+
   const [grade, setGrade] = useState("0");
   const [semester, setSemester] = useState("0");
   const [sortType, setSortType] = useState(SORT_TYPE.NORMAL);
@@ -216,7 +216,10 @@ const Score: React.FC = () => {
         </View>
         <View className='score-right'>
           <Text className='score-name'>{score.courseName}</Text>
-          <Text className='score-credit'>{score.credit}</Text>
+          <View>
+            <Text className='score-credit'>{`${i18n.eduScore.credit} ${score.credit}`}</Text>
+            <Text className='score-point'>{`${i18n.eduScore.point} ${score.point}`}</Text>
+          </View>
         </View>
       </View>
     );
@@ -240,9 +243,8 @@ const Score: React.FC = () => {
               onPickerClick={handlePickerClick}
             />
             <View
-              className={`semester-picker-mask ${
-                mode === SCORE_MODE.ANALYSIS && "semester-picker-mask__active"
-              }`}
+              className={`semester-picker-mask ${mode === SCORE_MODE.ANALYSIS && "semester-picker-mask__active"
+                }`}
             >
               <Text className='semester-picker-mask__text'>
                 {i18n.eduScore.all}
@@ -411,7 +413,7 @@ const Score: React.FC = () => {
                     >
                       <Text className='info-value'>{item.totalCredit}</Text>
                       <Text className='info-title info-title__type'>
-                        {`${item.type} (${item.scoreList.length})`}
+                        {`${item.type} (${item.scoreList.length}科)`}
                       </Text>
                     </View>
                   ))}
@@ -446,7 +448,7 @@ const Score: React.FC = () => {
                     >
                       <Text className='info-value'>{item.totalCredit}</Text>
                       <Text className='info-title info-title__type'>
-                        {`${item.type} (${item.scoreList.length})`}
+                        {`${item.type} (${item.scoreList.length}科)`}
                       </Text>
                     </View>
                   ))}
@@ -456,25 +458,28 @@ const Score: React.FC = () => {
           </View>
         )}
         {mode === SCORE_MODE.SEARCH && scoreList.length > 0 && (
-          <View className='filter' onClick={changeSortType}>
-            {sortType === SORT_TYPE.NORMAL && (
-              <Image
-                className='sort-icon'
-                src={require("../../../assets/images/list-check.svg")}
-              />
-            )}
-            {sortType === SORT_TYPE.ASC && (
-              <Image
-                className='sort-icon sort-icon__active'
-                src={require("../../../assets/images/sort-asc__active.svg")}
-              />
-            )}
-            {sortType === SORT_TYPE.DESC && (
-              <Image
-                className='sort-icon sort-icon__active'
-                src={require("../../../assets/images/sort-desc__active.svg")}
-              />
-            )}
+          <View className='search-header'>
+            <View className='search-title'>{i18n.eduScore.searchTitle({ scoreLength: scoreList.length })}</View>
+            <View className='filter' onClick={changeSortType}>
+              {sortType === SORT_TYPE.NORMAL && (
+                <Image
+                  className='sort-icon'
+                  src={require("../../../assets/images/list-check.svg")}
+                />
+              )}
+              {sortType === SORT_TYPE.ASC && (
+                <Image
+                  className='sort-icon sort-icon__active'
+                  src={require("../../../assets/images/sort-asc__active.svg")}
+                />
+              )}
+              {sortType === SORT_TYPE.DESC && (
+                <Image
+                  className='sort-icon sort-icon__active'
+                  src={require("../../../assets/images/sort-desc__active.svg")}
+                />
+              )}
+            </View>
           </View>
         )}
         {mode === SCORE_MODE.SEARCH && (

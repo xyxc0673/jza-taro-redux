@@ -275,7 +275,13 @@ $form-height: 350px;
 
   &-credit {
     color: #999999;
-    font-size: 30px;
+    font-size: 25px;
+  }
+
+  &-point {
+    color: #999999;
+    font-size: 25px;
+    margin-left: 30px;
   }
 
   &-value {
@@ -473,4 +479,15 @@ $form-height: 350px;
 
 .semester-picker-mask__text {
   padding: 0 20px
+}
+
+.search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-title {
+  font-weight: 600;
+  font-size: 1rem;
 }

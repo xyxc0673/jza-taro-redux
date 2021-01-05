@@ -201,6 +201,14 @@ const zh_CN = {
     advanced: '得分情况',
     category: '类别分布',
     level: '分数分布',
+    credit: '学分',
+    point: '绩点',
+    searchTitle: [
+      '总共 {{scoreLength}} 科',
+      {
+        scoreLength: 0
+      }
+    ],
     qaList: {
       q1: '分类规则',
       a1: 'A > 90, 90 < B <= 80, 80 < C <= 70, 70 < D <= 60, E < 60',
