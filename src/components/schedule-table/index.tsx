@@ -8,6 +8,7 @@ import { ICourse } from '@/interfaces/couese'
 
 import './index.scss'
 import i18n from "@/i18n";
+import Tip from "@/tip";
 
 interface IDayDate {
   date: string
@@ -41,6 +42,7 @@ const ScheduleTable: React.FC<IProps> = props => {
     backWeekVisible,
     selectedWeek,
     onGoBack,
+    changeWeek
   } = props
 
   const [currDate] = useState(
@@ -70,7 +72,6 @@ const ScheduleTable: React.FC<IProps> = props => {
 
   const handleTouchEnd = useCallback(
     () => {
-      const { changeWeek } = props
       let deltaX = touchMoveX - touchStartX
       let deltaY = touchMoveY - touchStartY
 
@@ -84,17 +85,29 @@ const ScheduleTable: React.FC<IProps> = props => {
 
       if (deltaX > deltaY) {
         if (touchMoveX - touchStartX <= -30) {
-          changeWeek && changeWeek(1)
+          handleChangeWeek(1)
           clearTouchCoor()
         }
 
         if (touchMoveX - touchStartX >= 30) {
-          changeWeek && changeWeek(-1)
+          handleChangeWeek(-1)
           clearTouchCoor()
         }
       }
     },
     [touchStartX, touchStartY, touchMoveX, touchMoveY],
+  )
+
+  const handleChangeWeek = useCallback(
+    (value) => {
+      const afterWeek = selectedWeek + value
+      if (afterWeek < 1 || afterWeek > 25) {
+        Tip.showToast(i18n.eduSchedule.outOfRange, false)
+        return
+      }
+      changeWeek && changeWeek(value)
+    },
+    [selectedWeek],
   )
 
   const clearTouchCoor = () => {

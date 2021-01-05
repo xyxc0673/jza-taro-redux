@@ -215,6 +215,7 @@ const zh_CN = {
     }
   },
   eduSchedule: {
+    outOfRange: '已经到头啦~',
     setting: {
       title: '更换课表',
       pickerTitle: '请选择学年学期',

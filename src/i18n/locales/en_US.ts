@@ -215,6 +215,7 @@ const en_US = {
     }
   },
   eduSchedule: {
+    outOfRange: 'Out of range~',
     setting: {
       title: 'Change Schedule',
       pickerTitle: 'Please Select',
