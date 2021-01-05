@@ -48,7 +48,7 @@ const CourseModal: React.FC<IProps> = props => {
     <View className={backgroundClassName} onClick={onClose || undefined}>
       <View
         className='container'
-        style={{ backgroundColor: course.color || '#fff', opacity: 0.95 }}
+        style={{ backgroundColor: course.currentColor || '#fff', opacity: 0.95 }}
       >
         <View className='field'>
           <Image

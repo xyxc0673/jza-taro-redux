@@ -12,6 +12,7 @@ export interface ICourse extends ICourseBase {
   teacher: string,
   location: string,
   color: string,
+  currentColor: string,
   time: string,
   startTime: string,
   endTime: string,

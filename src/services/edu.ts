@@ -391,7 +391,9 @@ class Edu {
       }
 
       if (!course.isCurrWeekCourse) {
-        course.color = NOT_CURR_WEEK_COURSE_COLOR
+        course.currentColor = NOT_CURR_WEEK_COURSE_COLOR
+      } else {
+        course.currentColor = course.color
       }
 
       // 对被当前 course 影响的 cell(s) 的 flex 置为 0（即不可见）
