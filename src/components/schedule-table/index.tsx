@@ -83,13 +83,15 @@ const ScheduleTable: React.FC<IProps> = props => {
         deltaY *= -1
       }
 
+      const triggerValue = 55
+
       if (deltaX > deltaY) {
-        if (touchMoveX - touchStartX <= -30) {
+        if (touchMoveX - touchStartX <= -triggerValue) {
           handleChangeWeek(1)
           clearTouchCoor()
         }
 
-        if (touchMoveX - touchStartX >= 30) {
+        if (touchMoveX - touchStartX >= triggerValue) {
           handleChangeWeek(-1)
           clearTouchCoor()
         }
