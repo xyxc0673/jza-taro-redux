@@ -188,6 +188,10 @@ const Index = () => {
     }
   };
 
+  const isZh = i18n._.getLocaleName() === "zh"
+
+  const helloFormat = isZh ? "MMMDo dddd" : "MMM Do dddd"
+
   return (
     <View className='page-index'>
       <View className='top'>
@@ -199,8 +203,8 @@ const Index = () => {
         </View>
         <View className='date'>
           {`${dayjs()
-            .locale(i18n._.getLocaleName() === "zh" ? "zh-cn" : "en")
-            .format("MMM Do dddd")}`}
+            .locale(isZh ? "zh-cn" : "en")
+            .format(helloFormat)}`}
         </View>
       </View>
       <View className='panel'>
