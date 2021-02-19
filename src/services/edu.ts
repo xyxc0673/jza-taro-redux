@@ -112,7 +112,7 @@ class Edu {
     for (let i = 0; i < scheduleList.length; i += 1) {
       const item = scheduleList[i]
       let sameKeyCount = 0
-      for (let key of keys) {
+      for (const key of keys) {
         if (item[key] === schedule[key]) {
           sameKeyCount += 1
         }
@@ -136,27 +136,13 @@ class Edu {
     return Taro.getStorageSync(CUSTOM_SCHEDULE) || []
   }
 
-  static async getCurrWeek(forceUpdate = false) {
+  static getCurrWeek(schoolStartDate: string): number {
     /**
      * Get the current week from school start date
      */
-    let schoolStartDate = this.getSchoolStartDate()
-
-    if (forceUpdate || !schoolStartDate) {
-      const res = await api.eduSchoolStartDate()
-
-      if (!res) {
-        return -1
-      }
-
-      schoolStartDate = res.data.date
-    }
-
-    this.setSchoolStartDate(schoolStartDate)
-
     return Math.ceil(
       (new Date().getTime() - new Date(schoolStartDate).getTime()) /
-        SECONDS_OF_A_WEEK
+      SECONDS_OF_A_WEEK
     )
   }
 
@@ -201,7 +187,7 @@ class Edu {
   }
 
   static initSessionList() {
-    let sessionList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    const sessionList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     return sessionList
   }
 
@@ -210,9 +196,9 @@ class Edu {
      * 生成一个 8 * 12 的矩阵
      * 行均是 ICourse * 12 的数组
      */
-    let schedule: Array<any> = []
+    const schedule: Array<any> = []
     for (let i = 0; i < 7; i++) {
-      let courseBlock: Array<ICourseBase> = []
+      const courseBlock: Array<ICourseBase> = []
       for (let j = 0; j < 12; j++) {
         courseBlock[j] = {
           index: [i + 1, j + 1],
@@ -230,7 +216,7 @@ class Edu {
     const scheduleColorCache = {}
     let colorIndex = 0
 
-    for (const course of  rawSchedule) {
+    for (const course of rawSchedule) {
       course.id = Edu.generateCourseId(course)
 
       course.type = custom ? CourseType.custom : CourseType.user
@@ -268,7 +254,7 @@ class Edu {
      * 生成一个 8 * N 的矩阵
      * 其余行均是 ICourse * 12 的数组
      */
-    let schedule: Array<any> = []
+    const schedule: Array<any> = []
     for (let i = 0; i < 7; i++) {
       const courseBlock: Array<ICourse> = []
       schedule.push(courseBlock)
@@ -279,14 +265,14 @@ class Edu {
   static initSchedule(
     rawSchedule: Array<ICourse>,
     currWeek: number,
-    currDay: number = -1,
-    forceRender: boolean = false,
-    forTab: boolean = false
+    currDay = -1,
+    forceRender = false,
+    forTab = false
   ) {
     const isGettingOneDaySchedule = currDay !== -1
     const setting = User.getSetting(SETTING.SCHEDULE)
 
-    let schedule =  this.initScheduleFrame()
+    let schedule = this.initScheduleFrame()
 
     if (forTab) {
       schedule = this.initScheduleTab()
@@ -302,7 +288,7 @@ class Edu {
       })
     }
 
-    for (let course of rawSchedule) {
+    for (const course of rawSchedule) {
       if (forTab) {
         schedule[course.dayInt - 1].push(course)
         continue
@@ -317,8 +303,8 @@ class Edu {
       const weekList = course.during.split(',')
       const sessionList = course.session.split(',')
 
-      for (let w of weekList) {
-        let week = parseInt(w)
+      for (const w of weekList) {
+        const week = parseInt(w)
         if (week === currWeek) {
           course.isCurrWeekCourse = true
           break
@@ -370,7 +356,7 @@ class Edu {
         continue
       }
 
-      let x = parseInt(course.day) - 1
+      const x = parseInt(course.day) - 1
       let y = course.firstSession
 
       // 判断当前cell是否已经被划分为不显示的格子，即已经被某个课程撑开而隐藏

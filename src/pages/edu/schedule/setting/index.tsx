@@ -55,7 +55,7 @@ const ScheduleSetting: React.FC = () => {
 
     const filterList = [] as Array<any>
 
-    for (let key in filterMap) {
+    for (const key in filterMap) {
       filterList.push({
         key: key,
         scheduleList: filterMap[key]
@@ -82,15 +82,8 @@ const ScheduleSetting: React.FC = () => {
       return
     }
 
-    const res2 = await dispatch<any>(fetchSchollStartDate())
-
-    if (res2.code !== 1) {
-      return
-    }
-
     const schedule = Edu.preprocessSchedule(res.data.schedule)
 
-    Edu.setSchoolStartDate(res2.data.date)
     dispatch(setMySchedule({ mySchedule: schedule }))
 
     Taro.switchTab({ url: Route.path.tabbarSchedule })

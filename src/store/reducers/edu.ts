@@ -13,7 +13,8 @@ import {
   EDU_SET_RECOMMEND_SCHEDULE,
   EDU_SET_RECOMMEND_SCHEDULE_LIST,
   EDU_SET_EDITING_COURSE,
-  EDU_SET_ACCOUNT
+  EDU_SET_ACCOUNT,
+  EDU_SCHOOL_START_DATE
 } from '@/store/constants/edu'
 import Edu from '@/services/edu'
 import { SCORE_LEVEL, SCORE_LEVEL_VALUE } from '@/data/enums/score-level'
@@ -31,7 +32,8 @@ const initialState = {
   recommendClass: [],
   recommendSchedule: [],
   recommendScheduleList: [],
-  editCourse: {}
+  editCourse: {},
+  schoolStartDate: ''
 }
 
 export default function edu(state = initialState, action) {
@@ -129,6 +131,14 @@ export default function edu(state = initialState, action) {
       return {
         ...state,
         account: action.payload
+      }
+    case EDU_SCHOOL_START_DATE:
+      const schoolStartDate = action.payload.data.date
+      Edu.setSchoolStartDate(schoolStartDate)
+      return {
+        ...state,
+        schoolStartDate: schoolStartDate,
+        currWeek: Edu.getCurrWeek(schoolStartDate)
       }
     default:
       return state

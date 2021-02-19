@@ -11,10 +11,10 @@ import advancedFormat from 'dayjs/plugin/advancedFormat'
 import {
   setMySchedule,
   setCustomSchedule,
-  setCurrWeek,
   setAccount,
   setRecommendScheduleList,
   setRecommendSchedule,
+  fetchSchollStartDate,
 } from "@/store/actions/edu";
 import { setUserSetting } from "@/store/actions/user";
 import { setSystemInfo } from "@/store/actions/common";
@@ -24,7 +24,6 @@ import Edu from "@/services/edu";
 import { User } from "@/services/user";
 import Common from "@/services/common";
 
-import {} from "@/store/actions/";
 import i18n from "@/i18n";
 import IDayDate from "@/interfaces/day-date";
 
@@ -76,7 +75,6 @@ const Index = () => {
     const _setting = User.getSetting();
     const _mySchedule = Edu.getMySchedule();
     const _customSchedule = Edu.getCustomSchedule();
-    const _currWeek = await Edu.getCurrWeek();
     const _systemInfo = Common.getSystemInfo();
 
     const _account = Taro.getStorageSync("account");
@@ -87,7 +85,7 @@ const Index = () => {
     setCurrDay(day === 0 ? 7 : day);
     dispatch(setAccount(_account));
 
-    dispatch(setCurrWeek({ currWeek: _currWeek }));
+    dispatch(fetchSchollStartDate())
     dispatch(setMySchedule({ mySchedule: _mySchedule }));
     dispatch(setCustomSchedule({ customSchedule: _customSchedule }));
     dispatch(setSystemInfo({ systemInfo: _systemInfo }));
@@ -113,7 +111,7 @@ const Index = () => {
   useEffect(() => {
     const scheduleList = [] as Array<any>;
 
-    for (let item of recommendScheduleList) {
+    for (const item of recommendScheduleList) {
       if (!item.pin) {
         continue;
       }
