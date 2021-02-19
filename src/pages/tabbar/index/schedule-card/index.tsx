@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "@tarojs/components";
+import { View, Text, Image } from "@tarojs/components";
 import { ITouchEvent } from "@tarojs/components/types/common";
 import className from "classnames";
 import { ICourse } from "@/interfaces/couese";
@@ -23,6 +23,7 @@ const ScheduleCard: React.FC<IProps> = (props) => {
       <View className='container' onClick={onClick}>
         <View className='header'>
           <Text className='header-title'>{`${props.title}`}</Text>
+          <Image className='arrow-right' src={require('../../../../assets/images/arrow-right-s-line.svg')} />
         </View>
         <View className='schedule-list'>
           {schedule.length === 0 && (
