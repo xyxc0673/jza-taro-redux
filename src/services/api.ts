@@ -116,7 +116,7 @@ export default {
   cardBalance: payload => {
     return request.cardAuthRequest({
       url: api.CARD_BALANCE,
-      params: { slientMode: payload.slientMode }
+      params: { silentMode: payload.silentMode }
     })
   },
 
@@ -157,7 +157,7 @@ export default {
     return request.baseRequest({
       url: api.LIB_READER_CAPTCHA,
       data: payload,
-      slientMode: true
+      silentMode: true
     })
   },
   libraryReaderInfo: payload => {

@@ -14,10 +14,10 @@ class Tip {
     })
   }
 
-  static showLoading({ title = i18n.loading, slientMode = false }) {
+  static showLoading({ title = i18n.loading, silentMode = false }) {
     this.isLoading = true
-    if (!slientMode && Taro.showLoading) {
-      console.log(slientMode, !slientMode && Taro.showLoading)
+    if (!silentMode && Taro.showLoading) {
+      console.log(silentMode, !silentMode && Taro.showLoading)
       Taro.showLoading({
         title: title,
         mask: true
@@ -27,7 +27,7 @@ class Tip {
     }
   }
 
-  static hideLoading({ slientMode = false }) {
+  static hideLoading({ silentMode = false }) {
     if (!this.isLoading) {
       return
     }

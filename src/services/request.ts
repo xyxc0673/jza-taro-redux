@@ -15,7 +15,7 @@ const checkHttpStatus = res => {
   throw new Error(i18n.serverErrorText)
 }
 
-const checkSuccess = (res, slientMode) => {
+const checkSuccess = (res, silentMode) => {
   if (
     res.data === REQUEST.SESSION_EXPIRED_SERVER ||
     res.data === REQUEST.NOT_LOGIN
@@ -24,7 +24,7 @@ const checkSuccess = (res, slientMode) => {
   }
 
   if (res.code.toString() === "-1") {
-    if (slientMode) {
+    if (silentMode) {
       Tip.showToast(`${res.msg}`)
     } else {
       Tip.showModal(
@@ -52,20 +52,20 @@ export default {
       ...params
     }
 
-    Tip.showLoading({ slientMode: params.slientMode })
+    Tip.showLoading({ silentMode: params.silentMode })
 
     console.log("params", params)
     return Taro.request(options)
       .then(checkHttpStatus)
       .then(async data => {
-        Tip.hideLoading({ slientMode: params.slientMode })
+        Tip.hideLoading({ silentMode: params.silentMode })
 
         console.log("baseRequest", options, data)
-        return checkSuccess(data, params.slientMode)
+        return checkSuccess(data, params.silentMode)
       })
       .catch(
         (err): PromiseLike<never> => {
-          Tip.hideLoading({ slientMode: params.slientMode })
+          Tip.hideLoading({ silentMode: params.silentMode })
 
           console.error(`[${new Date()}][Error][Request.ts]: ${err}`)
 
