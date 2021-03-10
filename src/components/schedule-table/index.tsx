@@ -97,7 +97,7 @@ const ScheduleTable: React.FC<IProps> = props => {
         }
       }
     },
-    [touchStartX, touchStartY, touchMoveX, touchMoveY],
+    [touchMoveX, touchStartX, touchMoveY, touchStartY, handleChangeWeek],
   )
 
   const handleChangeWeek = useCallback(
@@ -109,7 +109,7 @@ const ScheduleTable: React.FC<IProps> = props => {
       }
       changeWeek && changeWeek(value)
     },
-    [selectedWeek],
+    [changeWeek, selectedWeek],
   )
 
   const clearTouchCoor = () => {
@@ -164,6 +164,7 @@ const ScheduleTable: React.FC<IProps> = props => {
   const backgroundClass = className('schedule-background', {
     'schedule-background__blur': backgroundStyle === BACKGROUND_IMAGE_STYLE.BLUR
   })
+  
   return (
     <View className='schedule' onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
       <View
