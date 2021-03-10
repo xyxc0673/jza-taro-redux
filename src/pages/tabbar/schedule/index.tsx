@@ -97,10 +97,6 @@ const TabbarSchedule: React.FC = () => {
   )
 
   useEffect(() => {
-    if (!selectedWeek) {
-      return
-    }
-
     initSchedule(selectedWeek)
   }, [selectedWeek, initSchedule, switchWeek])
 
@@ -200,7 +196,7 @@ const TabbarSchedule: React.FC = () => {
   const scheduleHeaderClass = className('schedule-header', {
     'schedule-header__with-week-tab': showWeekTab
   })
-
+  
   return (
     <View className='schedule-page'>
       {selectedCourse && (
